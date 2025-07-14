@@ -19,5 +19,7 @@ int main(int argc, char **argv) {
     glutCreateWindow("Teste OpenGL");
     glutDisplayFunc(display);
     glutMainLoop();
+    //teste
+    //teste2
     return 0;
 }
