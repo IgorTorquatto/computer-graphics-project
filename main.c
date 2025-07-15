@@ -19,7 +19,6 @@ void display() {
     } else if (estadoAtual == APLICACAO_EXECUTANDO) {
         glColor3f(1, 1, 1);
         desenharInterface();
-        //desenharTextoCentralizado(windowWidth / 2, windowHeight / 2, "Interface de desenho...", GLUT_BITMAP_HELVETICA_18);
     }
 
     glutSwapBuffers();

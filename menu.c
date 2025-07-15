@@ -32,8 +32,8 @@ void desenharTextoComEspaco(float x, float y, const char* texto, float espaco) {
     float posX = x;
     for (int i = 0; texto[i]; i++) {
         glRasterPos2f(posX, y);
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, texto[i]);
-        posX += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, texto[i]) + espaco;
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, texto[i]);
+        posX += glutBitmapWidth(GLUT_BITMAP_TIMES_ROMAN_24, texto[i]) + espaco;
     }
 }
 
@@ -116,7 +116,7 @@ void desenharMenuInicial() {
     desenharFundoDecorado(); // fundo decorado com formas
 
     // Título
-    const char* titulo = "PAINT";
+    const char* titulo = "TRABALHO";
     float larguraTotal = 0;
     for (int i = 0; titulo[i]; i++)
         larguraTotal += glutBitmapWidth(GLUT_BITMAP_TIMES_ROMAN_24, titulo[i]) + 10;
