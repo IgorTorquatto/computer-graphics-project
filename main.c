@@ -3,6 +3,10 @@
 #include <GL/freeglut.h>
 #include <string.h>
 #include "menu.h"
+#include "estruturas.h"
+#include "interface.h"
+#include "estado.h"
+
 
 int windowWidth = 800;
 int windowHeight = 600;
@@ -14,7 +18,8 @@ void display() {
         desenharMenuInicial();
     } else if (estadoAtual == APLICACAO_EXECUTANDO) {
         glColor3f(1, 1, 1);
-        desenharTextoCentralizado(windowWidth / 2, windowHeight / 2, "Interface de desenho...", GLUT_BITMAP_HELVETICA_18);
+        desenharInterface();
+        //desenharTextoCentralizado(windowWidth / 2, windowHeight / 2, "Interface de desenho...", GLUT_BITMAP_HELVETICA_18);
     }
 
     glutSwapBuffers();

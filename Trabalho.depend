@@ -1,15 +1,18 @@
 # depslib dependency file v1.0
-1752533518 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
+1752608352 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
 	<GL/glut.h>
 	<math.h>
 	"menu.h"
 
-1752533733 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\main.c
+1752613837 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\main.c
 	<stdio.h>
 	<stdlib.h>
 	<GL/freeglut.h>
 	<string.h>
 	"menu.h"
+	"estruturas.h"
+	"interface.h"
+	"estado.h"
 
 1426360528 c:\program files\codeblocks\mingw\include\gl\freeglut.h
 	"freeglut_std.h"
@@ -32,5 +35,29 @@
 1426360528 c:\program files\codeblocks\mingw\include\gl\glut.h
 	"freeglut_std.h"
 
-1752533226 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.h
+1752608394 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.h
+
+1752613741 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.c
+	"estado.h"
+
+1752614580 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
+	<GL/glut.h>
+	"menu.h"
+	"estado.h"
+
+1752611371 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.c
+
+1752612879 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estruturas.h
+	<stdio.h>
+
+1752613594 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.h
+	"estruturas.h"
+
+1752613540 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.h
+	"estruturas.h"
+	"listaPontos.h"
+
+1752612896 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.h
+	<stdio.h>
+	"estruturas.h"
 
