@@ -7,6 +7,32 @@
 #define BTN_W 80
 #define BTN_H 30
 
+#define RT_X 100
+#define RT_Y 560
+#define RT_W 80
+#define RT_H 30
+
+#define POL_X 190
+#define POL_Y 560
+#define POL_W 80
+#define POL_H 30
+
+#define SEL_X 280
+#define SEL_Y 560
+#define SEL_W 80
+#define SEL_H 30
+
+#define SLV_X 370
+#define SLV_Y 560
+#define SLV_W 80
+#define SLV_H 30
+
+#define SAI_X 460
+#define SAI_Y 560
+#define SAI_W 80
+#define SAI_H 30
+
+
 void desenharInterface() {
     // Desenha botão "Ponto"
     glColor3f(0.2, 0.2, 0.5);
@@ -27,8 +53,113 @@ void desenharInterface() {
     glVertex2f(BTN_X, BTN_Y + BTN_H);
     glEnd();
 
+    // Desenha botão "Reta"
+    glColor3f(0.2, 0.2, 0.5);
+    glBegin(GL_QUADS);
+    glVertex2f(RT_X, RT_Y);
+    glVertex2f(RT_X + RT_W, RT_Y);
+    glVertex2f(RT_X + RT_W, RT_Y + RT_H);
+    glVertex2f(RT_X, RT_Y + RT_H);
+    glEnd();
+
+    // Borda
+    glColor3f(1.0, 1.0, 1.0);
+    glLineWidth(2.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(RT_X, RT_Y);
+    glVertex2f(RT_X + RT_W, RT_Y);
+    glVertex2f(RT_X+ RT_W, RT_Y + RT_H);
+    glVertex2f(RT_X, RT_Y + RT_H);
+    glEnd();
+
+    // Desenha botão "Polígono"
+    glColor3f(0.2, 0.2, 0.5);
+    glBegin(GL_QUADS);
+    glVertex2f(POL_X, POL_Y);
+    glVertex2f(POL_X + POL_W, POL_Y);
+    glVertex2f(POL_X + POL_W, POL_Y + POL_H);
+    glVertex2f(POL_X, POL_Y + POL_H);
+    glEnd();
+
+    // Borda
+    glColor3f(1.0, 1.0, 1.0);
+    glLineWidth(2.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(POL_X, POL_Y);
+    glVertex2f(POL_X + POL_W, POL_Y);
+    glVertex2f(POL_X+ POL_W, POL_Y + POL_H);
+    glVertex2f(POL_X, POL_Y + POL_H);
+    glEnd();
+
+    // Desenha botão "Seleção"
+    glColor3f(0.2, 0.2, 0.5);
+    glBegin(GL_QUADS);
+    glVertex2f(SEL_X, SEL_Y);
+    glVertex2f(SEL_X + SEL_W, SEL_Y);
+    glVertex2f(SEL_X + SEL_W, SEL_Y + SEL_H);
+    glVertex2f(SEL_X, SEL_Y + SEL_H);
+    glEnd();
+
+    // Borda
+    glColor3f(1.0, 1.0, 1.0);
+    glLineWidth(2.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(SEL_X, SEL_Y);
+    glVertex2f(SEL_X + SEL_W, SEL_Y);
+    glVertex2f(SEL_X+ SEL_W, SEL_Y + SEL_H);
+    glVertex2f(SEL_X, SEL_Y + SEL_H);
+    glEnd();
+
+     // Desenha botão "Sair"
+    glColor3f(0.2, 0.2, 0.5);
+    glBegin(GL_QUADS);
+    glVertex2f(SAI_X, SAI_Y);
+    glVertex2f(SAI_X + SAI_W, SAI_Y);
+    glVertex2f(SAI_X + SAI_W, SAI_Y + SAI_H);
+    glVertex2f(SAI_X, SAI_Y + SAI_H);
+    glEnd();
+
+    // Borda
+    glColor3f(1.0, 1.0, 1.0);
+    glLineWidth(2.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(SAI_X, SAI_Y);
+    glVertex2f(SAI_X + SAI_W, SAI_Y);
+    glVertex2f(SAI_X+ SAI_W, SAI_Y + SAI_H);
+    glVertex2f(SAI_X, SAI_Y + SAI_H);
+    glEnd();
+
+     // Desenha botão "Salvar"
+    glColor3f(0.2, 0.2, 0.5);
+    glBegin(GL_QUADS);
+    glVertex2f(SLV_X, SLV_Y);
+    glVertex2f(SLV_X + SLV_W, SLV_Y);
+    glVertex2f(SLV_X + SLV_W, SLV_Y + SLV_H);
+    glVertex2f(SLV_X, SLV_Y + SLV_H);
+    glEnd();
+
+    // Borda
+    glColor3f(1.0, 1.0, 1.0);
+    glLineWidth(2.0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(SLV_X, SLV_Y);
+    glVertex2f(SLV_X + SLV_W, SLV_Y);
+    glVertex2f(SLV_X+ SLV_W, SLV_Y + SLV_H);
+    glVertex2f(SLV_X, SLV_Y + SLV_H);
+    glEnd();
+
     glColor3f(1, 1, 1);
     desenharTextoCentralizado(BTN_X + BTN_W/2, (BTN_Y + BTN_H/2 - 4)+5, "Ponto", GLUT_BITMAP_HELVETICA_12);
+    glColor3f(1, 1, 1);
+    desenharTextoCentralizado(RT_X + RT_W/2, (RT_Y + RT_H/2 - 4)+5, "Reta", GLUT_BITMAP_HELVETICA_12);
+    glColor3f(1, 1, 1);
+    desenharTextoCentralizado(POL_X + POL_W/2, (POL_Y + POL_H/2 - 4)+5, "Poligono", GLUT_BITMAP_HELVETICA_12);
+    glColor3f(1, 1, 1);
+    desenharTextoCentralizado(SEL_X + SEL_W/2, (SEL_Y + SEL_H/2 - 4)+5, "Selecao", GLUT_BITMAP_HELVETICA_12);
+    glColor3f(1, 1, 1);
+    desenharTextoCentralizado(SLV_X + SLV_W/2, (SLV_Y + SLV_H/2 - 4)+5, "Salvar", GLUT_BITMAP_HELVETICA_12);
+    glColor3f(1, 1, 1);
+    desenharTextoCentralizado(SAI_X + SAI_W/2, (SAI_Y + SAI_H/2 - 4)+5, "Sair", GLUT_BITMAP_HELVETICA_12);
 }
 
 int cliqueDentroBotaoPonto(int x, int y) {
@@ -39,6 +170,7 @@ int cliqueDentroBotaoPonto(int x, int y) {
 void clickInterface(int x, int y) {
     if (cliqueDentroBotaoPonto(x, y)) {
         modoAtual = MODO_PONTO;
+        printf("teste");
     }
 }
 

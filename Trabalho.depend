@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1752608352 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
+1752619804 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
 	<GL/glut.h>
 	<math.h>
 	"menu.h"
@@ -40,7 +40,7 @@
 1752613741 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.c
 	"estado.h"
 
-1752614580 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
+1752619572 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
 	<GL/glut.h>
 	"menu.h"
 	"estado.h"
