@@ -135,27 +135,31 @@ int cliqueDentroDoBotao(Botao b, int mx, int my) {
             my >= b.y && my <= b.y + b.altura);
 }
 
-// Callback de clique do mouse
 void mouseClick(int button, int state, int x, int y) {
-    if (estadoAtual == MENU_INICIAL && button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        int mouseYInvertido = windowHeight - y;
-
-        for (int i = 0; i < numBotoes; i++) {
-            if (cliqueDentroDoBotao(botoesMenu[i], x, mouseYInvertido)) {
-                switch (i) {
-                    case 0:
-                        estadoAtual = APLICACAO_EXECUTANDO;
-                        break;
-                    case 1:
-                        // carregar projeto
-                        break;
-                    case 2:
-                        exit(0);
-                        break;
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        if (estadoAtual == MENU_INICIAL) {
+            int mouseYInvertido = windowHeight - y;
+            for (int i = 0; i < numBotoes; i++) {
+                if (cliqueDentroDoBotao(botoesMenu[i], x, mouseYInvertido)) {
+                    switch (i) {
+                        case 0:
+                            estadoAtual = APLICACAO_EXECUTANDO;
+                            break;
+                        case 1:
+                            // carregar projeto
+                            break;
+                        case 2:
+                            exit(0);
+                            break;
+                    }
+                    glutPostRedisplay();
                 }
             }
+        } else if (estadoAtual == APLICACAO_EXECUTANDO) {
+            int mouseYInvertido = windowHeight - y;
+            clickInterface(x, mouseYInvertido);
+            glutPostRedisplay();
         }
-
-        glutPostRedisplay();
     }
 }
+

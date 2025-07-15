@@ -167,10 +167,17 @@ int cliqueDentroBotaoPonto(int x, int y) {
            y >= BTN_Y && y <= BTN_Y + BTN_H;
 }
 
+int cliqueDentroBotaoSair(int x, int y) {
+    return x >= SAI_X && x <= SAI_X + SAI_W &&
+           y >= SAI_Y && y <= SAI_Y + SAI_H;
+}
+
+
 void clickInterface(int x, int y) {
     if (cliqueDentroBotaoPonto(x, y)) {
         modoAtual = MODO_PONTO;
-        printf("teste");
+    } else if (cliqueDentroBotaoSair(x, y)) {
+        estadoAtual = MENU_INICIAL;
+        glutPostRedisplay();  // atualiza a tela com o menu
     }
 }
-

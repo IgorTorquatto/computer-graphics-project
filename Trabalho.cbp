@@ -42,10 +42,15 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="estado.h" />
+		<Unit filename="estruturas.h" />
 		<Unit filename="interface.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="interface.h" />
+		<Unit filename="listaPontos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="listaPontos.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -53,10 +58,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />
-		<Unit filename="objetos.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="objetos.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
