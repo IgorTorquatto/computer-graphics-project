@@ -7,11 +7,6 @@
 
 EstadoApp estadoAtual = MENU_INICIAL;
 
-typedef struct {
-    float x, y, largura, altura;
-    const char* texto;
-} Botao;
-
 Botao botoesMenu[] = {
     {300, 360, 200, 50, "Iniciar"},
     {300, 280, 200, 50, "Carregar"},
@@ -19,12 +14,6 @@ Botao botoesMenu[] = {
 };
 
 int numBotoes = sizeof(botoesMenu) / sizeof(Botao);
-
-// Funções: desenharTextoCentralizado, desenharTextoComEspaco, desenharBotao,
-// desenharFormaGeometrica, desenharFundoDecorado, desenharMenuInicial,
-// cliqueDentroDoBotao, mouseClick
-
-// (copie todas as implementações exatas como estão no seu código)
 
 // Desenha texto no centro de um retângulo
 void desenharTextoCentralizado(float x, float y, const char* texto, void* fonte) {

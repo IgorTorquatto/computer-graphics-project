@@ -13,7 +13,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="../../../../../../../../Program Files/CodeBlocks/MinGW/include" />
 				</Compiler>
+				<Linker>
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="freeglut" />
+					<Add directory="../../../../../../../../Program Files/CodeBlocks/MinGW/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Trabalho" prefix_auto="1" extension_auto="1" />
@@ -31,9 +38,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="estado.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="estado.h" />
+		<Unit filename="interface.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="interface.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.h" />
+		<Unit filename="objetos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="objetos.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
