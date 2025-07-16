@@ -16,5 +16,6 @@ typedef enum {
 
 extern ModoDesenho modoAtual;
 extern EstadoApp estadoAtual;
+extern ListaPontos listaPontos;
 
 #endif

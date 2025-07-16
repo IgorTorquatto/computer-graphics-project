@@ -38,6 +38,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize(windowWidth, windowHeight);
     glutCreateWindow("Trabalho Computação Gráfica");
 
+    inicializarEstados();
     init();
 
     glutDisplayFunc(display);
