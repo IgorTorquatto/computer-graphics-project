@@ -1,17 +1,12 @@
 #ifndef MENU_H
 #define MENU_H
 
-typedef enum {
-    MENU_INICIAL,
-    APLICACAO_EXECUTANDO
-} EstadoApp;
+#include "estado.h"
 
 typedef struct {
     float x, y, largura, altura;
     const char* texto;
 } Botao;
-
-extern EstadoApp estadoAtual;
 
 void desenharMenuInicial();
 void mouseClick(int button, int state, int x, int y);
