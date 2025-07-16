@@ -11,6 +11,7 @@
 int windowWidth = 800;
 int windowHeight = 600;
 
+
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 

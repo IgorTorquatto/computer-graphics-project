@@ -1,11 +1,11 @@
 #include <GL/glut.h>
 #include <math.h>
 #include "menu.h"
+#include "estruturas.h"
+#include "estado.h"
 
 #define windowWidth 800
 #define windowHeight 600
-
-EstadoApp estadoAtual = MENU_INICIAL;
 
 Botao botoesMenu[] = {
     {300, 360, 200, 50, "Iniciar"},
