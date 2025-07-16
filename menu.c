@@ -157,8 +157,20 @@ void mouseClick(int button, int state, int x, int y) {
             }
         } else if (estadoAtual == APLICACAO_EXECUTANDO) {
             int mouseYInvertido = windowHeight - y;
+            int clicouEmBotao = 0;
+
             clickInterface(x, mouseYInvertido);
-            glutPostRedisplay();
+
+            // Verifica se o clique foi sobre o botão "Ponto" ou "Sair"
+            // isso aqui só pra evitar criar ponto sobre os botões
+            if (cliqueDentroBotaoPonto(x, mouseYInvertido) || cliqueDentroBotaoSair(x, mouseYInvertido)) {
+                clicouEmBotao = 1;
+            }
+
+            if (modoAtual == MODO_PONTO && !clicouEmBotao) {
+                inserirPonto(&listaPontos, x, mouseYInvertido);
+                glutPostRedisplay();
+            }
         }
     }
 }

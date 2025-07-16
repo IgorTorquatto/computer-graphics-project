@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include "menu.h"
 #include "estado.h"
+#include "listaPontos.h"
 
 #define BTN_X 10
 #define BTN_Y 560
@@ -160,6 +161,7 @@ void desenharInterface() {
     desenharTextoCentralizado(SLV_X + SLV_W/2, (SLV_Y + SLV_H/2 - 4)+5, "Salvar", GLUT_BITMAP_HELVETICA_12);
     glColor3f(1, 1, 1);
     desenharTextoCentralizado(SAI_X + SAI_W/2, (SAI_Y + SAI_H/2 - 4)+5, "Sair", GLUT_BITMAP_HELVETICA_12);
+    desenharPontos(&listaPontos);
 }
 
 int cliqueDentroBotaoPonto(int x, int y) {
