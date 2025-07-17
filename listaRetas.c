@@ -2,6 +2,7 @@
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <math.h>
+#include "estado.h"
 
 void criarListaRetas(ListaRetas* lista) {
     lista->inicio = NULL;
@@ -31,16 +32,25 @@ void desenharRetas(ListaRetas* lista) {
     glBegin(GL_LINES);
     while (atual) {
         if (atual->reta.selected) {
-            glColor3f(1.0, 0.5, 0.0);  // Laranja se selecionada
+            glColor3f(1.0, 0.5, 0.0);  // laranja
         } else {
-             glColor3f(1.0, 0.0, 0.0);
+            glColor3f(1.0, 0.0, 0.0);
         }
         glVertex2d(atual->reta.x1, atual->reta.y1);
         glVertex2d(atual->reta.x2, atual->reta.y2);
         atual = atual->prox;
     }
+
+    // Reta temporária (pré-visualização)
+    if (modoAtual == MODO_RETA && criandoReta) {
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex2d(retaTempX1, retaTempY1);
+        glVertex2d(retaTempX2, retaTempY2);
+    }
+
     glEnd();
 }
+
 
 void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
     NoReta* atual = lista->inicio;

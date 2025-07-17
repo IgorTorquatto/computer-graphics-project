@@ -3,6 +3,8 @@
 #include "menu.h"
 #include "estruturas.h"
 #include "estado.h"
+#include "interface.h"
+
 
 #define windowWidth 800
 #define windowHeight 600
@@ -188,29 +190,36 @@ void mouseClick(int button, int state, int x, int y) {
             }
 
             else if (modoAtual == MODO_RETA && !clicouEmBotao) {
-                if (!retaEmAndamento) {
-                    tempX = x;
-                    tempY = mouseYInvertido;
-                    retaEmAndamento = 1;
-                } else {
-                    Reta novaReta;
-                    novaReta.id = listaRetas.tamanho;
-                    novaReta.x1 = tempX;
-                    novaReta.y1 = tempY;
-                    novaReta.x2 = x;
-                    novaReta.y2 = mouseYInvertido;
-                    novaReta.rgb_color[0] = 0.0;
-                    novaReta.rgb_color[1] = 0.0;
-                    novaReta.rgb_color[2] = 1.0;
-                    novaReta.selected = 0;
+            if (!criandoReta) {
+                // Primeiro clique: define o ponto inicial
+                retaTempX1 = x;
+                retaTempY1 = mouseYInvertido;
+                criandoReta = 1;
+            } else {
+                // Segundo clique: define ponto final, cria reta e reseta o estado
+                retaTempX2 = x;
+                retaTempY2 = mouseYInvertido;
 
-                    ListaRetasInserirFim(&listaRetas, novaReta);
-                    retaEmAndamento = 0;
-                    glutPostRedisplay();
-                }
+                Reta r;
+                r.id = listaRetas.tamanho + 1;
+                r.x1 = retaTempX1;
+                r.y1 = retaTempY1;
+                r.x2 = retaTempX2;
+                r.y2 = retaTempY2;
+                r.selected = 0;
+                r.rgb_color[0] = 1.0;
+                r.rgb_color[1] = 0.0;
+                r.rgb_color[2] = 0.0;
+
+                ListaRetasInserirFim(&listaRetas, r);
+                criandoReta = 0;
+
+                glutPostRedisplay();
             }
         }
+
     }
+}
 }
 
 

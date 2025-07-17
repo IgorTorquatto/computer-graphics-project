@@ -34,6 +34,8 @@
 #define SAI_W 80
 #define SAI_H 30
 
+#define windowWidth 800
+#define windowHeight 600
 
 void desenharInterface() {
     // Desenha botão "Ponto"
@@ -213,3 +215,12 @@ void clickInterface(int x, int y) {
     }
 
 }
+
+void motionMouse(int x, int y) {
+    if (modoAtual == MODO_RETA && criandoReta) {
+        retaTempX2 = x;
+        retaTempY2 = windowHeight - y;
+        glutPostRedisplay();
+    }
+}
+

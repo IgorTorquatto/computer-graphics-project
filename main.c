@@ -55,6 +55,10 @@ int main(int argc, char** argv) {
     glutMouseFunc(mouseClick);
     glutKeyboardFunc(keyPress);
 
+    //Pré-visualização segmento de reta
+    glutMotionFunc(motionMouse);         // com botão pressionado
+    glutPassiveMotionFunc(motionMouse);  // sem botão pressionado
+
 
     glutMainLoop();
     return 0;
