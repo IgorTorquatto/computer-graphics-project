@@ -16,6 +16,9 @@ typedef struct {
 void criarListaPontos(ListaPontos* lista);
 void inserirPonto(ListaPontos* lista, double x, double y);
 void desenharPontos(ListaPontos* lista);
+void selecionarPontoMaisProximo(ListaPontos* lista, int x, int y);
+void deletarSelecionados(ListaPontos* lista);
+
 
 #endif
 

@@ -23,13 +23,62 @@ void inserirPonto(ListaPontos* lista, double x, double y) {
 
 void desenharPontos(ListaPontos* lista) {
     NoPonto* atual = lista->inicio;
-    glPointSize(5.0f);
+    glPointSize(10.0f);
     glBegin(GL_POINTS);
     while (atual) {
-        glColor3dv(atual->ponto.rgb_color);
+        if (atual->ponto.selected)
+            glColor3f(1.0, 0.5, 0.0); // cor laranja se estiver selecionado
+        else
+            glColor3dv(atual->ponto.rgb_color); // cor normal
+
         glVertex2d(atual->ponto.x, atual->ponto.y);
         atual = atual->prox;
     }
     glEnd();
 }
+
+
+void selecionarPontoMaisProximo(ListaPontos* lista, int x, int y) {
+    double raioSelecao = 10.0; // tolerância
+    NoPonto* atual = lista->inicio;
+
+    while (atual) {
+        double dx = atual->ponto.x - x;
+        double dy = atual->ponto.y - y;
+        double dist = sqrt(dx * dx + dy * dy);
+
+        if (dist <= raioSelecao) {
+            atual->ponto.selected = 1;
+            break; // só seleciona um
+        }
+
+        atual = atual->prox;
+    }
+}
+
+
+void deletarSelecionados(ListaPontos* lista) {
+    NoPonto* atual = lista->inicio;
+    NoPonto* anterior = NULL;
+
+    while (atual) {
+        if (atual->ponto.selected) {
+            NoPonto* temp = atual;
+            if (anterior == NULL) {
+                lista->inicio = atual->prox;
+            } else {
+                anterior->prox = atual->prox;
+            }
+            atual = atual->prox;
+            free(temp);
+            lista->contador--;
+        } else {
+            anterior = atual;
+            atual = atual->prox;
+        }
+    }
+    printf("Total de pontos apos exclusao: %d\n", lista->contador);
+}
+
+
 

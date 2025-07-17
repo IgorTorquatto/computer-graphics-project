@@ -161,9 +161,8 @@ void mouseClick(int button, int state, int x, int y) {
 
             clickInterface(x, mouseYInvertido);
 
-            // Verifica se o clique foi sobre o botão "Ponto" ou "Sair"
-            // isso aqui só pra evitar criar ponto sobre os botões
-            if (cliqueDentroBotaoPonto(x, mouseYInvertido) || cliqueDentroBotaoSair(x, mouseYInvertido)) {
+            // Verifica se o clique foi sobre algum botão para não criar objetos em cima deles
+            if (cliqueDentroBotaoPonto(x, mouseYInvertido) || cliqueDentroBotaoSair(x, mouseYInvertido) || cliqueDentroBotaoReta(x,mouseYInvertido) || cliqueDentroBotaoPoligono(x,mouseYInvertido) || cliqueDentroBotaoSalvar(x,mouseYInvertido) || cliqueDentroBotaoSelecao(x,mouseYInvertido)) {
                 clicouEmBotao = 1;
             }
 
@@ -171,6 +170,12 @@ void mouseClick(int button, int state, int x, int y) {
                 inserirPonto(&listaPontos, x, mouseYInvertido);
                 glutPostRedisplay();
             }
+
+            else if (modoAtual == MODO_SELECAO && !clicouEmBotao) {
+                selecionarPontoMaisProximo(&listaPontos, x, mouseYInvertido);
+                glutPostRedisplay();
+            }
+
         }
     }
 }
