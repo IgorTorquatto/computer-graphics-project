@@ -7,6 +7,7 @@
 typedef enum {
     MODO_NENHUM,
     MODO_PONTO,
+    MODO_SELECAO
 } ModoDesenho;
 
 typedef enum {

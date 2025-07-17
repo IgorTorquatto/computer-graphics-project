@@ -169,6 +169,26 @@ int cliqueDentroBotaoPonto(int x, int y) {
            y >= BTN_Y && y <= BTN_Y + BTN_H;
 }
 
+int cliqueDentroBotaoReta(int x, int y) {
+    return x >= RT_X && x <= RT_X + RT_W &&
+           y >= RT_Y && y <= RT_Y + RT_H;
+}
+
+int cliqueDentroBotaoPoligono(int x, int y) {
+    return x >= POL_X && x <= POL_X + POL_W &&
+           y >= POL_Y && y <= POL_Y + POL_H;
+}
+
+int cliqueDentroBotaoSelecao(int x, int y) {
+    return x >= SEL_X && x <= SEL_X + SEL_W &&
+           y >= SEL_Y && y <= SEL_Y + SEL_H;
+}
+
+int cliqueDentroBotaoSalvar(int x, int y) {
+    return x >= SLV_X && x <= SLV_X + SLV_W &&
+           y >= SLV_Y && y <= SLV_Y + SLV_H;
+}
+
 int cliqueDentroBotaoSair(int x, int y) {
     return x >= SAI_X && x <= SAI_X + SAI_W &&
            y >= SAI_Y && y <= SAI_Y + SAI_H;
@@ -178,7 +198,11 @@ int cliqueDentroBotaoSair(int x, int y) {
 void clickInterface(int x, int y) {
     if (cliqueDentroBotaoPonto(x, y)) {
         modoAtual = MODO_PONTO;
-    } else if (cliqueDentroBotaoSair(x, y)) {
+    }
+    else if (cliqueDentroBotaoSelecao(x, y)) {
+    modoAtual = MODO_SELECAO;
+    }
+    else if (cliqueDentroBotaoSair(x, y)) {
         estadoAtual = MENU_INICIAL;
         glutPostRedisplay();  // atualiza a tela com o menu
     }
