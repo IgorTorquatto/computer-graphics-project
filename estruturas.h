@@ -5,12 +5,21 @@
 
 // Definições de tipos
 typedef struct ponto Ponto;
+typedef struct reta Reta;
 
 // Estrutura de ponto
 struct ponto {
     int id;
     double x;
     double y;
+    double rgb_color[3];
+    int selected;
+};
+
+struct reta {
+    int id;
+    double x1, y1;
+    double x2, y2;
     double rgb_color[3];
     int selected;
 };

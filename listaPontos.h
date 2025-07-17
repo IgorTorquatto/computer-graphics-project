@@ -10,7 +10,7 @@ typedef struct NoPonto {
 
 typedef struct {
     NoPonto* inicio;
-    int contador; // para gerar ids
+    int contador;
 } ListaPontos;
 
 void criarListaPontos(ListaPontos* lista);

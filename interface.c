@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "estado.h"
 #include "listaPontos.h"
+#include "listaRetas.h"
 
 #define BTN_X 10
 #define BTN_Y 560
@@ -162,6 +163,7 @@ void desenharInterface() {
     glColor3f(1, 1, 1);
     desenharTextoCentralizado(SAI_X + SAI_W/2, (SAI_Y + SAI_H/2 - 4)+5, "Sair", GLUT_BITMAP_HELVETICA_12);
     desenharPontos(&listaPontos);
+    desenharRetas(&listaRetas);
 }
 
 int cliqueDentroBotaoPonto(int x, int y) {
@@ -206,4 +208,8 @@ void clickInterface(int x, int y) {
         estadoAtual = MENU_INICIAL;
         glutPostRedisplay();  // atualiza a tela com o menu
     }
+    else if (cliqueDentroBotaoReta(x, y)) {
+        modoAtual = MODO_RETA;
+    }
+
 }

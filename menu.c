@@ -136,6 +136,9 @@ int cliqueDentroDoBotao(Botao b, int mx, int my) {
 }
 
 void mouseClick(int button, int state, int x, int y) {
+    static int retaEmAndamento = 0;
+    static double tempX, tempY;
+
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         if (estadoAtual == MENU_INICIAL) {
             int mouseYInvertido = windowHeight - y;
@@ -155,14 +158,21 @@ void mouseClick(int button, int state, int x, int y) {
                     glutPostRedisplay();
                 }
             }
-        } else if (estadoAtual == APLICACAO_EXECUTANDO) {
+        }
+
+        else if (estadoAtual == APLICACAO_EXECUTANDO) {
             int mouseYInvertido = windowHeight - y;
             int clicouEmBotao = 0;
 
             clickInterface(x, mouseYInvertido);
 
-            // Verifica se o clique foi sobre algum botão para não criar objetos em cima deles
-            if (cliqueDentroBotaoPonto(x, mouseYInvertido) || cliqueDentroBotaoSair(x, mouseYInvertido) || cliqueDentroBotaoReta(x,mouseYInvertido) || cliqueDentroBotaoPoligono(x,mouseYInvertido) || cliqueDentroBotaoSalvar(x,mouseYInvertido) || cliqueDentroBotaoSelecao(x,mouseYInvertido)) {
+            // Verifica se o clique foi sobre algum botão
+            if (cliqueDentroBotaoPonto(x, mouseYInvertido) ||
+                cliqueDentroBotaoSair(x, mouseYInvertido) ||
+                cliqueDentroBotaoReta(x, mouseYInvertido) ||
+                cliqueDentroBotaoPoligono(x, mouseYInvertido) ||
+                cliqueDentroBotaoSalvar(x, mouseYInvertido) ||
+                cliqueDentroBotaoSelecao(x, mouseYInvertido)) {
                 clicouEmBotao = 1;
             }
 
@@ -173,10 +183,34 @@ void mouseClick(int button, int state, int x, int y) {
 
             else if (modoAtual == MODO_SELECAO && !clicouEmBotao) {
                 selecionarPontoMaisProximo(&listaPontos, x, mouseYInvertido);
+                selecionarRetaMaisProxima(&listaRetas, x, mouseYInvertido);
                 glutPostRedisplay();
             }
 
+            else if (modoAtual == MODO_RETA && !clicouEmBotao) {
+                if (!retaEmAndamento) {
+                    tempX = x;
+                    tempY = mouseYInvertido;
+                    retaEmAndamento = 1;
+                } else {
+                    Reta novaReta;
+                    novaReta.id = listaRetas.tamanho;
+                    novaReta.x1 = tempX;
+                    novaReta.y1 = tempY;
+                    novaReta.x2 = x;
+                    novaReta.y2 = mouseYInvertido;
+                    novaReta.rgb_color[0] = 0.0;
+                    novaReta.rgb_color[1] = 0.0;
+                    novaReta.rgb_color[2] = 1.0;
+                    novaReta.selected = 0;
+
+                    ListaRetasInserirFim(&listaRetas, novaReta);
+                    retaEmAndamento = 0;
+                    glutPostRedisplay();
+                }
+            }
         }
     }
 }
+
 
