@@ -3,11 +3,13 @@
 
 #include "estruturas.h"
 #include "listaPontos.h"
+#include "listaRetas.h"
 
 typedef enum {
     MODO_NENHUM,
     MODO_PONTO,
-    MODO_SELECAO
+    MODO_SELECAO,
+    MODO_RETA
 } ModoDesenho;
 
 typedef enum {
@@ -18,5 +20,6 @@ typedef enum {
 extern ModoDesenho modoAtual;
 extern EstadoApp estadoAtual;
 extern ListaPontos listaPontos;
+extern ListaRetas listaRetas;
 
 #endif
