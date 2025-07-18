@@ -79,14 +79,16 @@ void deletarRetasSelecionadas(ListaRetas* lista) {
     NoReta* atual = lista->inicio;
     NoReta* anterior = NULL;
 
-    while (atual) {
+    while (atual != NULL) {
         if (atual->reta.selected) {
             NoReta* temp = atual;
-            if (anterior) {
-                anterior->prox = atual->prox;
-            } else {
+
+            if (anterior == NULL) {
                 lista->inicio = atual->prox;
+            } else {
+                anterior->prox = atual->prox;
             }
+
             atual = atual->prox;
             free(temp);
             lista->tamanho--;
@@ -96,6 +98,7 @@ void deletarRetasSelecionadas(ListaRetas* lista) {
         }
     }
 
-    printf("Total de retas: %d\n", lista->tamanho);
+    printf("Retas restantes: %d\n", lista->tamanho);
 }
+
 

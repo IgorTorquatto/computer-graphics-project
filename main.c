@@ -29,6 +29,7 @@ void keyPress(unsigned char key, int x, int y) {
     if (key == 8) { // Backspace
         if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
             deletarSelecionados(&listaPontos);
+            deletarRetasSelecionadas(&listaRetas);
             glutPostRedisplay();
         }
     }
