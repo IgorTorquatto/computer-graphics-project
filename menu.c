@@ -6,8 +6,6 @@
 #include "interface.h"
 #include "listaPoligonos.h"
 
-
-
 #define windowWidth 800
 #define windowHeight 600
 
@@ -188,6 +186,7 @@ void mouseClick(int button, int state, int x, int y) {
             else if (modoAtual == MODO_SELECAO && !clicouEmBotao) {
                 selecionarPontoMaisProximo(&listaPontos, x, mouseYInvertido);
                 selecionarRetaMaisProxima(&listaRetas, x, mouseYInvertido);
+                selecionarPoligonoMaisProximo(&listaPoligonos, x, mouseYInvertido);
                 glutPostRedisplay();
             }
 

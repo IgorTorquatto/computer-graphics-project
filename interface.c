@@ -172,7 +172,7 @@ void desenharInterface() {
 
   // Desenhar visualização do polígono em criação
 if (criandoPoligono && poligonoTemp.numVertices > 0) {
-    glColor3f(1.0, 1.0, 0.0); // cor amarela temporária
+    glColor3f(1.0, 0.0, 0.0);
     glBegin(GL_LINE_STRIP);
     for (int i = 0; i < poligonoTemp.numVertices; i++) {
         glVertex2f(poligonoTemp.verticesX[i], poligonoTemp.verticesY[i]);
