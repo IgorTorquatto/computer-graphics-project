@@ -88,8 +88,9 @@
 1752852422 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.h
 	"estruturas.h"
 
-1752850171 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
+1752881949 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
 	"listaPoligonos.h"
 	<stdlib.h>
 	<GL/glut.h>
+	<math.h>
 

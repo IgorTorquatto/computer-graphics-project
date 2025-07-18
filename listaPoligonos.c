@@ -60,6 +60,7 @@ void ListaPoligonosInserirFim(ListaPoligonos* lista, Poligono p) {
     }
 
     lista->tamanho++;
+    printf("Poligono criado. Total na lista: %d\n", lista->tamanho);
 }
 
 void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y) {
@@ -104,4 +105,5 @@ void deletarPoligonosSelecionados(ListaPoligonos* lista) {
             atual = atual->prox;
         }
     }
+     printf("Total de poligonos apos exclusao: %d\n", lista->tamanho);
 }

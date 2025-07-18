@@ -71,7 +71,6 @@ void keyPress(unsigned char key, int x, int y) {
     }
 }
 
-
 void init() {
     glClearColor(0.529, 0.808, 0.922, 1.0); // azul claro
     glMatrixMode(GL_PROJECTION);
