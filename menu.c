@@ -4,6 +4,8 @@
 #include "estruturas.h"
 #include "estado.h"
 #include "interface.h"
+#include "listaPoligonos.h"
+
 
 
 #define windowWidth 800
@@ -216,6 +218,25 @@ void mouseClick(int button, int state, int x, int y) {
 
                 glutPostRedisplay();
             }
+        }
+
+            else if (modoAtual == MODO_POLIGONO && !clicouEmBotao) {
+            if (!criandoPoligono) {
+                criandoPoligono = 1;
+                poligonoTemp.id = listaPoligonos.tamanho;
+                poligonoTemp.numVertices = 0;
+                poligonoTemp.rgb_color[0] = 1.0;
+                poligonoTemp.rgb_color[1] = 0.0;
+                poligonoTemp.rgb_color[2] = 0.0;
+                poligonoTemp.selected = 0;
+            }
+
+            if (poligonoTemp.numVertices < MAX_VERTICES) {
+                poligonoTemp.verticesX[poligonoTemp.numVertices] = x;
+                poligonoTemp.verticesY[poligonoTemp.numVertices] = windowHeight - y;
+                poligonoTemp.numVertices++;
+            }
+            glutPostRedisplay();
         }
 
     }

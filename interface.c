@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include "menu.h"
 #include "estado.h"
+#include "interface.h"
 #include "listaPontos.h"
 #include "listaRetas.h"
 
@@ -166,6 +167,21 @@ void desenharInterface() {
     desenharTextoCentralizado(SAI_X + SAI_W/2, (SAI_Y + SAI_H/2 - 4)+5, "Sair", GLUT_BITMAP_HELVETICA_12);
     desenharPontos(&listaPontos);
     desenharRetas(&listaRetas);
+    desenharPoligonos(&listaPoligonos);
+
+
+  // Desenhar visualização do polígono em criação
+if (criandoPoligono && poligonoTemp.numVertices > 0) {
+    glColor3f(1.0, 1.0, 0.0); // cor amarela temporária
+    glBegin(GL_LINE_STRIP);
+    for (int i = 0; i < poligonoTemp.numVertices; i++) {
+        glVertex2f(poligonoTemp.verticesX[i], poligonoTemp.verticesY[i]);
+    }
+    glVertex2f(mouseXPreview, mouseYPreview); // preview até o mouse
+    glEnd();
+}
+
+
 }
 
 int cliqueDentroBotaoPonto(int x, int y) {
@@ -213,7 +229,10 @@ void clickInterface(int x, int y) {
     else if (cliqueDentroBotaoReta(x, y)) {
         modoAtual = MODO_RETA;
     }
-
+    else if (cliqueDentroBotaoPoligono(x, y)) {
+    modoAtual = MODO_POLIGONO;
+    criandoPoligono = 0;  // resetar estado anterior se necessário
+    }
 }
 
 void motionMouse(int x, int y) {
@@ -222,5 +241,12 @@ void motionMouse(int x, int y) {
         retaTempY2 = windowHeight - y;
         glutPostRedisplay();
     }
+
+    if (modoAtual == MODO_POLIGONO && criandoPoligono) {
+        mouseXPreview = x;
+        mouseYPreview = windowHeight - y;
+        glutPostRedisplay();
+    }
 }
+
 
