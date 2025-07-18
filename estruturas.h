@@ -2,6 +2,7 @@
 #define ESTRUTURAS_H
 
 #include <stdio.h>
+#define MAX_VERTICES 100
 
 // Definições de tipos
 typedef struct ponto Ponto;
@@ -23,5 +24,14 @@ struct reta {
     double rgb_color[3];
     int selected;
 };
+
+typedef struct poligono {
+    int id;
+    int numVertices;
+    double verticesX[MAX_VERTICES];
+    double verticesY[MAX_VERTICES];
+    double rgb_color[3];
+    int selected;
+} Poligono;
 
 #endif
