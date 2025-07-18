@@ -47,6 +47,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="interface.h" />
+		<Unit filename="listaPoligonos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="listaPoligonos.h" />
 		<Unit filename="listaPontos.c">
 			<Option compilerVar="CC" />
 		</Unit>

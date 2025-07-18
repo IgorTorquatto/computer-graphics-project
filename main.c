@@ -8,24 +8,8 @@
 #include "estado.h"
 #include "listaPoligonos.h"
 
-
-
 int windowWidth = 800;
 int windowHeight = 600;
-
-
-/*void display() {
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    if (estadoAtual == MENU_INICIAL) {
-        desenharMenuInicial();
-    } else if (estadoAtual == APLICACAO_EXECUTANDO) {
-        glColor3f(1, 1, 1);
-        desenharInterface();
-    }
-
-    glutSwapBuffers();
-}*/
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -36,7 +20,7 @@ void display() {
         glColor3f(1, 1, 1);
         desenharInterface();
 
-        // Desenhar preview da reta (se houver)
+        // Desenhar preview da reta
         if (modoAtual == MODO_RETA && criandoReta) {
             glColor3f(1.0, 0.0, 0.0); // Vermelho
             glLineWidth(2.0);
@@ -68,7 +52,7 @@ void display() {
 
 void keyPress(unsigned char key, int x, int y) {
 
-     if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // tecla Enter (código ASCII 13)
+     if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // tecla Enter
         if (poligonoTemp.numVertices >= 3) {
             ListaPoligonosInserirFim(&listaPoligonos, poligonoTemp);
         }
@@ -81,6 +65,7 @@ void keyPress(unsigned char key, int x, int y) {
         if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
             deletarSelecionados(&listaPontos);
             deletarRetasSelecionadas(&listaRetas);
+            deletarPoligonosSelecionados(&listaPoligonos);
             glutPostRedisplay();
         }
     }
