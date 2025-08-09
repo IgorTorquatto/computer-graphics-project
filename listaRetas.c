@@ -52,6 +52,8 @@ void desenharRetas(ListaRetas* lista) {
 }
 
 
+/*
+Algoritmo de seleção antigo baseado na distância da reta
 void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
     NoReta* atual = lista->inicio;
     while (atual) {
@@ -70,6 +72,85 @@ void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
                 atual->reta.selected = !atual->reta.selected;
                 break;
             }
+        }
+        atual = atual->prox;
+    }
+}*/
+
+
+// calcular código de região
+int codigo(double x, double y, double xmin, double xmax, double ymin, double ymax) {
+    int code = 0; // 0000
+    if (x < xmin) code |= 1;   // esquerda
+    else if (x > xmax) code |= 2; // direita
+    if (y < ymin) code |= 4;   // abaixo
+    else if (y > ymax) code |= 8; // acima
+    return code;
+}
+
+int pickReta(double x0, double y0, double x1, double y1, double mx, double my, double t) {
+    double xmin = mx - t;
+    double xmax = mx + t;
+    double ymin = my - t;
+    double ymax = my + t;
+
+    int code0 = codigo(x0, y0, xmin, xmax, ymin, ymax);
+    int code1 = codigo(x1, y1, xmin, xmax, ymin, ymax);
+
+    while (1) {
+        if ((code0 | code1) == 0) {
+            // Totalmente dentro
+            return 1;
+        } else if (code0 & code1) {
+            // Totalmente fora
+            return 0;
+        } else {
+            double x, y;
+            int outcodeOut = code0 ? code0 : code1;
+
+            if (outcodeOut & 8) { // acima
+                x = x0 + (x1 - x0) * (ymax - y0) / (y1 - y0);
+                y = ymax;
+            } else if (outcodeOut & 4) { // abaixo
+                x = x0 + (x1 - x0) * (ymin - y0) / (y1 - y0);
+                y = ymin;
+            } else if (outcodeOut & 2) { // direita
+                y = y0 + (y1 - y0) * (xmax - x0) / (x1 - x0);
+                x = xmax;
+            } else if (outcodeOut & 1) { // esquerda
+                y = y0 + (y1 - y0) * (xmin - x0) / (x1 - x0);
+                x = xmin;
+            }
+
+            if (outcodeOut == code0) {
+                x0 = x;
+                y0 = y;
+                code0 = codigo(x0, y0, xmin, xmax, ymin, ymax);
+            } else {
+                x1 = x;
+                y1 = y;
+                code1 = codigo(x1, y1, xmin, xmax, ymin, ymax);
+            }
+        }
+    }
+}
+
+void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
+    NoReta* atual = lista->inicio;
+    const double tolerancia = 5.0;
+
+    while (atual) {
+        if (pickReta(atual->reta.x1, atual->reta.y1,
+                     atual->reta.x2, atual->reta.y2,
+                     x, y, tolerancia)) {
+            // Apenas um selecionado por vez
+            NoReta* temp = lista->inicio;
+            while (temp) {
+                temp->reta.selected = 0;
+                temp = temp->prox;
+            }
+            atual->reta.selected = 1;
+            break;
         }
         atual = atual->prox;
     }
