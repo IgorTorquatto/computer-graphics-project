@@ -49,15 +49,22 @@ int pickPonto(float px, float py, float mx, float my, int t) {
 
 
 void selecionarPontoMaisProximo(ListaPontos* lista, int x, int y) {
-    double tolerancia = 10.0;
     NoPonto* atual = lista->inicio;
+    double tolerancia = 10.0;
 
+    //desmarca todos antes de selecionar o novo
+    while (atual) {
+        atual->ponto.selected = 0;
+        atual = atual->prox;
+    }
+
+    // procura o primeiro ponto dentro da tolerância
+    atual = lista->inicio;
     while (atual) {
         if (pickPonto(atual->ponto.x, atual->ponto.y, x, y, tolerancia)) {
             atual->ponto.selected = 1;
-            break; // só seleciona um
+            break; // para no primeiro encontrado
         }
-
         atual = atual->prox;
     }
 }
