@@ -37,21 +37,34 @@ void desenharPontos(ListaPontos* lista) {
     glEnd();
 }
 
+//Igual vimos em sala: verificação por retângulo com tolerância
+int pickPonto(float px, float py, float mx, float my, int t) {
+    if (mx <= px + t && mx >= px - t) {
+        if (my <= py + t && my >= py - t) {
+            return 1; // dentro da área detectável
+        }
+    }
+    return 0; // fora da área detectável
+}
+
 
 void selecionarPontoMaisProximo(ListaPontos* lista, int x, int y) {
-    double raioSelecao = 10.0; // tolerância
     NoPonto* atual = lista->inicio;
+    double tolerancia = 10.0;
 
+    //desmarca todos antes de selecionar o novo
     while (atual) {
-        double dx = atual->ponto.x - x;
-        double dy = atual->ponto.y - y;
-        double dist = sqrt(dx * dx + dy * dy);
+        atual->ponto.selected = 0;
+        atual = atual->prox;
+    }
 
-        if (dist <= raioSelecao) {
+    // procura o primeiro ponto dentro da tolerância
+    atual = lista->inicio;
+    while (atual) {
+        if (pickPonto(atual->ponto.x, atual->ponto.y, x, y, tolerancia)) {
             atual->ponto.selected = 1;
-            break; // só seleciona um
+            break; // para no primeiro encontrado
         }
-
         atual = atual->prox;
     }
 }
