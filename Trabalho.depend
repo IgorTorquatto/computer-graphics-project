@@ -8,7 +8,7 @@
 	"interface.h"
 	"listaPoligonos.h"
 
-1752852480 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\main.c
+1752882675 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\main.c
 	<stdio.h>
 	<stdlib.h>
 	<GL/freeglut.h>
@@ -88,7 +88,7 @@
 1752852422 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.h
 	"estruturas.h"
 
-1752881949 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
+1752882634 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
 	"listaPoligonos.h"
 	<stdlib.h>
 	<GL/glut.h>
