@@ -17,6 +17,7 @@ struct ponto {
     int selected;
 };
 
+
 struct reta {
     int id;
     double x1, y1;

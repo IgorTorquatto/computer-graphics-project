@@ -88,6 +88,9 @@ int codigo(double x, double y, double xmin, double xmax, double ymin, double yma
     return code;
 }
 
+
+
+
 int pickReta(double x0, double y0, double x1, double y1, double mx, double my, double t) {
     double xmin = mx - t;
     double xmax = mx + t;

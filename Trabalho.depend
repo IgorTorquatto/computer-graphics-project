@@ -94,3 +94,77 @@
 	<GL/glut.h>
 	<math.h>
 
+1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estado.c
+	"estado.h"
+	"interface.h"
+
+1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estado.h
+	"estruturas.h"
+	"listaPontos.h"
+	"listaRetas.h"
+	"listaPoligonos.h"
+
+1755169228 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estruturas.h
+	<stdio.h>
+
+1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.h
+	"estruturas.h"
+
+1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.h
+	"estruturas.h"
+
+1755344339 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.h
+	"estruturas.h"
+
+1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\interface.h
+	"estruturas.h"
+
+1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\interface.c
+	<GL/glut.h>
+	"menu.h"
+	"estado.h"
+	"interface.h"
+	"listaPontos.h"
+	"listaRetas.h"
+
+1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.h
+	"estado.h"
+
+1755450064 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.c
+	"listaPoligonos.h"
+	<stdlib.h>
+	<GL/glut.h>
+	<math.h>
+
+1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.c
+	<stdlib.h>
+	<GL/freeglut.h>
+	"listaPontos.h"
+
+1755169402 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.c
+	"listaRetas.h"
+	<GL/glut.h>
+	<stdlib.h>
+	<math.h>
+	"estado.h"
+
+1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<GL/freeglut.h>
+	<string.h>
+	"menu.h"
+	"estruturas.h"
+	"interface.h"
+	"estado.h"
+	"listaPoligonos.h"
+
+1755344433 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.c
+	<GL/glut.h>
+	<math.h>
+	"menu.h"
+	"estruturas.h"
+	"estado.h"
+	"interface.h"
+	"listaPoligonos.h"
+

@@ -85,6 +85,60 @@ void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y) {
     }
 }
 
+void selecionarPoli(ListaPoligonos* lista, int x, int y){
+    NoPoligono* atual = lista->inicio;
+    int count = 0;
+
+    while(atual != NULL){
+        // p recebe o primeiro da lista
+        Poligono* p = &atual->poligono;
+        count = 0;
+
+        printf("---------------------------------- \n");
+
+        for(int i = 0; i < p->numVertices; i++){
+            //printf("%d para a reta %d \n", count,i);
+            int j;
+
+            if(i == p->numVertices-1){
+                j = 0;
+            }else{
+                j = i+1;
+            }
+
+            // caso trivial
+            if((p->verticesY[i] > y && p->verticesY[j] > y) || (p->verticesY[i] < y && p->verticesY[j] < y) || (p->verticesX[i] < x && p->verticesX[j] < x)){
+                printf("Nao selecionada \n");
+                printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+            }else if((p->verticesX[i] > x && p->verticesX[j] > x) && (p->verticesY[i] > y && p->verticesY[j] < y) || (p->verticesY[i] < y && p->verticesY[j] > y)){
+                float xi;
+                xi = p->verticesX[i] + ((y - p->verticesY[i])*(p->verticesX[j] - p->verticesX[i]) / (p->verticesY[j] - p->verticesY[i]));
+                printf("o valor da intersecao eh: %d \n", xi);
+                if(xi > (float)x){
+                    count++;
+                    printf("%d Nao trivial para a reta %d\n",count,i);
+                    printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+                }
+
+                /*count++;
+                printf("%d No caso trivial para a reta %d\n", count,i);
+                printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+                */
+            }/*else{ // caso não trivial
+
+            }*/
+
+        }
+
+
+        if(count%2 != 0){
+            p->selected = !p->selected;
+        }
+        atual = atual->prox;
+    }
+
+}
+
 void deletarPoligonosSelecionados(ListaPoligonos* lista) {
     NoPoligono* atual = lista->inicio;
     NoPoligono* anterior = NULL;
