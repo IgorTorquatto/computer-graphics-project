@@ -69,6 +69,7 @@ void keyPress(unsigned char key, int x, int y) {
             glutPostRedisplay();
         }
     }
+
 }
 
 void init() {

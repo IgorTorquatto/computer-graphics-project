@@ -107,7 +107,7 @@
 1755169228 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estruturas.h
 	<stdio.h>
 
-1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.h
+1755534869 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.h
 	"estruturas.h"
 
 1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.h
@@ -130,13 +130,13 @@
 1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.h
 	"estado.h"
 
-1755450064 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.c
+1755455949 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.c
 	"listaPoligonos.h"
 	<stdlib.h>
 	<GL/glut.h>
 	<math.h>
 
-1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.c
+1755534849 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.c
 	<stdlib.h>
 	<GL/freeglut.h>
 	"listaPontos.h"
@@ -148,7 +148,7 @@
 	<math.h>
 	"estado.h"
 
-1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\main.c
+1755465614 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\main.c
 	<stdio.h>
 	<stdlib.h>
 	<GL/freeglut.h>
