@@ -7,6 +7,7 @@
 #include "interface.h"
 #include "estado.h"
 #include "listaPoligonos.h"
+#include "listaPontos.h"
 
 int windowWidth = 800;
 int windowHeight = 600;
@@ -91,6 +92,8 @@ int main(int argc, char** argv) {
     glutDisplayFunc(display);
     glutMouseFunc(mouseClick);
     glutKeyboardFunc(keyPress);
+    glutSpecialFunc(specialKeys);
+
 
     //Pré-visualização segmento de retae poligono
     glutMotionFunc(motionMouse);         // com botão pressionado

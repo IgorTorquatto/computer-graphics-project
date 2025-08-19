@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/freeglut.h>
 #include "listaPontos.h"
+#include "estado.h"
 
 void criarListaPontos(ListaPontos* lista) {
     lista->inicio = NULL;
@@ -52,22 +53,26 @@ void selecionarPontoMaisProximo(ListaPontos* lista, int x, int y) {
     NoPonto* atual = lista->inicio;
     double tolerancia = 10.0;
 
-    //desmarca todos antes de selecionar o novo
+    // desmarca todos
     while (atual) {
         atual->ponto.selected = 0;
         atual = atual->prox;
     }
+
+    pontoSelecionado = NULL; //reseta seleção ADICIONADO PARA TRANSLACAO
 
     // procura o primeiro ponto dentro da tolerância
     atual = lista->inicio;
     while (atual) {
         if (pickPonto(atual->ponto.x, atual->ponto.y, x, y, tolerancia)) {
             atual->ponto.selected = 1;
-            break; // para no primeiro encontrado
+            pontoSelecionado = &atual->ponto; //guarda para usar no teclado ADICIONADO PARA TRANSLACAO
+            break;
         }
         atual = atual->prox;
     }
 }
+
 /*
 
 void multiply_matriz_ponto(double matrizA[3][3], Ponto *destino) {
@@ -169,6 +174,5 @@ void deletarSelecionados(ListaPontos* lista) {
     }
     printf("Total de pontos apos exclusao: %d\n", lista->contador);
 }
-
 
 

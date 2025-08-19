@@ -35,6 +35,7 @@ extern int mouseXPreview;
 extern int mouseYPreview;
 extern int criandoPoligono;
 Poligono poligonoTemp;
+extern Ponto* pontoSelecionado;
 
 
 #endif
