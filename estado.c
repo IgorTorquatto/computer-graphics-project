@@ -25,3 +25,4 @@ void inicializarEstados() {
     criarListaPoligonos(&listaPoligonos);
 }
 
+Ponto* pontoSelecionado = NULL;
