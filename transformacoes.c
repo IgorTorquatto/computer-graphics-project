@@ -59,3 +59,32 @@ void aplicarMatrizNoPonto(double matriz[3][3], Ponto* p) {
     p->y = matriz[1][0] * xOriginal + matriz[1][1] * yOriginal + matriz[1][2];
 }
 
+void aplicaMatrizReta(double m[3][3], double *x, double *y) {
+    double xNovo = m[0][0] * (*x) + m[0][1] * (*y) + m[0][2] * 1.0;
+    double yNovo = m[1][0] * (*x) + m[1][1] * (*y) + m[1][2] * 1.0;
+    double w     = m[2][0] * (*x) + m[2][1] * (*y) + m[2][2] * 1.0;
+
+    // Normalizar coordenadas homogêneas
+    if (w != 0.0) {
+        xNovo /= w;
+        yNovo /= w;
+    }
+
+    *x = xNovo;
+    *y = yNovo;
+}
+
+void transladarReta(Reta* reta, double dx, double dy) {
+    if (reta == NULL) return;
+
+    double matriz[3][3] = {
+        {1, 0, dx},
+        {0, 1, dy},
+        {0, 0, 1}
+    };
+
+    aplicaMatrizReta(matriz, &reta->x1, &reta->y1);
+    aplicaMatrizReta(matriz, &reta->x2, &reta->y2);
+}
+
+
