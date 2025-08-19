@@ -8,6 +8,7 @@
 #include "estado.h"
 #include "listaPoligonos.h"
 #include "listaPontos.h"
+#include "transformacoes.h"
 
 int windowWidth = 800;
 int windowHeight = 600;
@@ -51,7 +52,7 @@ void display() {
 }
 
 
-void keyPress(unsigned char key, int x, int y) {
+/*void keyPress(unsigned char key, int x, int y) {
 
      if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // tecla Enter
         if (poligonoTemp.numVertices >= 3) {
@@ -71,7 +72,65 @@ void keyPress(unsigned char key, int x, int y) {
         }
     }
 
+}*/
+
+void teclado(unsigned char key, int x, int y) {
+    // Enter para poligono
+    if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // Enter
+        if (poligonoTemp.numVertices >= 3) {
+            ListaPoligonosInserirFim(&listaPoligonos, poligonoTemp);
+        }
+        criandoPoligono = 0;
+        glutPostRedisplay();
+        return;
+    }
+
+    // Backspace para deletar selecionados
+    if (key == 8) { // Backspace
+        if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
+            deletarSelecionados(&listaPontos);
+            deletarRetasSelecionadas(&listaRetas);
+            deletarPoligonosSelecionados(&listaPoligonos);
+            glutPostRedisplay();
+            return;
+        }
+    }
+
+    // R rotaciona pontos
+    if (pontoSelecionado && key == 'r') {
+        printf("rotacionando ponto\n");
+        double matriz[3][3];
+        Ponto centro; // origem
+        centro.x = 0;
+        centro.y = 0;
+        pegarMatrizRotacao(matriz, key, centro);
+        aplicarMatrizNoPonto(matriz, pontoSelecionado);
+        glutPostRedisplay();
+        return;
+    }
+
+    // Outras teclas
 }
+
+void specialKeys(int key, int x, int y) {
+    if (pontoSelecionado) {
+        printf("transladando ponto \n");
+        double passo = 10.0; //5.0
+        double dx = 0.0, dy = 0.0;
+
+        switch (key) {
+            case GLUT_KEY_LEFT:  dx = -passo; break;
+            case GLUT_KEY_RIGHT: dx =  passo; break;
+            case GLUT_KEY_UP:    dy =  passo; break;
+            case GLUT_KEY_DOWN:  dy = -passo; break;
+            default: return;
+        }
+
+        transladarPonto(pontoSelecionado, dx, dy);
+        glutPostRedisplay();
+    }
+}
+
 
 void init() {
     glClearColor(0.529, 0.808, 0.922, 1.0); // azul claro
@@ -91,7 +150,7 @@ int main(int argc, char** argv) {
 
     glutDisplayFunc(display);
     glutMouseFunc(mouseClick);
-    glutKeyboardFunc(keyPress);
+    glutKeyboardFunc(teclado);
     glutSpecialFunc(specialKeys);
 
 

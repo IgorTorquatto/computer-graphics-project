@@ -4,7 +4,6 @@
 #include "interface.h"
 #include "listaPontos.h"
 #include "listaRetas.h"
-#include "transformacoes.h"
 
 #define BTN_X 10
 #define BTN_Y 560
@@ -246,25 +245,6 @@ void motionMouse(int x, int y) {
     if (modoAtual == MODO_POLIGONO && criandoPoligono) {
         mouseXPreview = x;
         mouseYPreview = windowHeight - y;
-        glutPostRedisplay();
-    }
-}
-
-void specialKeys(int key, int x, int y) {
-    if (pontoSelecionado) {
-        printf("transladando ponto \n");
-        double passo = 10.0; //5.0
-        double dx = 0.0, dy = 0.0;
-
-        switch (key) {
-            case GLUT_KEY_LEFT:  dx = -passo; break;
-            case GLUT_KEY_RIGHT: dx =  passo; break;
-            case GLUT_KEY_UP:    dy =  passo; break;
-            case GLUT_KEY_DOWN:  dy = -passo; break;
-            default: return;
-        }
-
-        transladarPonto(pontoSelecionado, dx, dy);
         glutPostRedisplay();
     }
 }

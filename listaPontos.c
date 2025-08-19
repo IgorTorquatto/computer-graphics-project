@@ -175,4 +175,16 @@ void deletarSelecionados(ListaPontos* lista) {
     printf("Total de pontos apos exclusao: %d\n", lista->contador);
 }
 
+Ponto* getPontoSelecionado(ListaPontos* lista) {
+    NoPonto* atual = lista->inicio;
+    while (atual) {
+        if (atual->ponto.selected) {
+            return &atual->ponto;
+        }
+        atual = atual->prox;
+    }
+    return NULL;
+}
+
+
 
