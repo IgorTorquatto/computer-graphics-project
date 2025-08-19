@@ -8,8 +8,21 @@
 #include "estado.h"
 #include "listaPoligonos.h"
 
+
 int windowWidth = 800;
 int windowHeight = 600;
+
+float* multiplicarMatrizes(float A[3][3],float B[3][3]){
+    float C[3][3] = {0};
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            for(int k = 0; k < 3; k++){
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    return C;
+}
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -50,6 +63,7 @@ void display() {
 }
 
 
+
 void keyPress(unsigned char key, int x, int y) {
 
      if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // tecla Enter
@@ -70,6 +84,38 @@ void keyPress(unsigned char key, int x, int y) {
         }
     }
 
+    if (key == 'w'){
+        if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
+            transladarSelecionadosPoligonos(&listaPoligonos,0,10);
+            transladarSelecionadosPontos(&listaPontos,0,10);
+            transladarSelecionadosRetas(&listaRetas,0,10);
+            glutPostRedisplay();
+        }
+    }
+    if (key == 'a'){
+        if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
+            transladarSelecionadosPoligonos(&listaPoligonos,-10,0);
+            transladarSelecionadosPontos(&listaPontos,-10,0);
+            transladarSelecionadosRetas(&listaRetas,-10,0);
+            glutPostRedisplay();
+        }
+    }
+    if (key == 's'){
+        if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
+            transladarSelecionadosPoligonos(&listaPoligonos,0,-10);
+            transladarSelecionadosPontos(&listaPontos,0,-10);
+            transladarSelecionadosRetas(&listaRetas,0,-10);
+            glutPostRedisplay();
+        }
+    }
+    if (key == 'd'){
+        if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
+            transladarSelecionadosPoligonos(&listaPoligonos,10,0);
+            transladarSelecionadosPontos(&listaPontos,10,0);
+            transladarSelecionadosRetas(&listaRetas,10,0);
+            glutPostRedisplay();
+        }
+    }
 }
 
 void init() {

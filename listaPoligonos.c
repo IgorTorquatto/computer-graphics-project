@@ -85,6 +85,78 @@ void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y) {
     }
 }
 
+void selecionarPoli(ListaPoligonos* lista, int x, int y){
+    NoPoligono* atual = lista->inicio;
+    int count = 0;
+
+    while(atual != NULL){
+        // p recebe o primeiro da lista
+        Poligono* p = &atual->poligono;
+        count = 0;
+
+        printf("---------------------------------- \n");
+
+        for(int i = 0; i < p->numVertices; i++){
+            //printf("%d para a reta %d \n", count,i);
+            int j;
+            if(i == p->numVertices-1){
+                j = 0;
+            }else{
+                j = i+1;
+            }
+            int caso = 0;
+            int esp = 0;
+
+            if(i == 0){
+                esp = p->numVertices-1;
+            }else esp = i-1;
+            //problema, o codigo via apenas i e j como 1 e 2; Ele nao via como 2 e 1;
+
+            //aqui a reta nao é selecionada;
+            if((p->verticesY[i] > y && p->verticesY[j] > y) || (p->verticesY[i] < y && p->verticesY[j] < y) || (p->verticesX[i] < x && p->verticesX[j] < x)){
+                caso = 1;
+            }else if((p->verticesX[i] > x && p->verticesX[j] > x) && (p->verticesY[i] > y && p->verticesY[j] < y) || (p->verticesY[i] < y && p->verticesY[j] > y)){
+                // caso nao trivial 1 - calcula se a reta é selecionada;
+                caso = 2;
+            }else if((p->verticesX[i] > x && p->verticesX[j] > x) && (p->verticesY[i] < y && p->verticesY[j] > y) || (p->verticesY[i] > y && p->verticesY[j] < y)){
+                // caso nao trivial 2 - calcula se a reta é selecionada;
+                caso = 2;
+            }else if(p->verticesY[i] == y || p->verticesY[j] == y){
+                // usar o ponto i;
+                caso = 3;
+            }
+
+            if(p->verticesY[i] == p->verticesY[j] && p->verticesY[i] == y){
+                printf("Nao seleciona ne \n");
+            }else if(caso == 1){
+                printf("Nao selecionada \n");
+                printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+            }else if(caso == 2){
+                float xi;
+                xi = p->verticesX[i] + ((y - p->verticesY[i])*(p->verticesX[j] - p->verticesX[i]) / (p->verticesY[j] - p->verticesY[i]));
+                printf("o valor da intersecao eh: %f \n", xi);
+                printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+                if(xi > (float)x){
+                    count++;
+                    printf("%d Nao trivial para a reta %d\n",count,i);
+                    //printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+                }
+            }else if(caso == 3){
+                if(p->verticesY[i] == y){
+                    if((p->verticesY[esp] > y && p->verticesY[j] < y) || (p->verticesY[esp] < y && p->verticesY[j] > y)){
+                        count++;
+                    }else printf("Nao contamos essa reta \n");
+                }else printf("Nao contamos essa reta \n");
+            }else printf("AAAAAA \n Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+        }
+        if(count%2 != 0){
+            p->selected = !p->selected;
+        }
+        atual = atual->prox;
+    }
+
+}
+
 void deletarPoligonosSelecionados(ListaPoligonos* lista) {
     NoPoligono* atual = lista->inicio;
     NoPoligono* anterior = NULL;

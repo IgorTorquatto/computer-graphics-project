@@ -186,7 +186,7 @@ void mouseClick(int button, int state, int x, int y) {
             else if (modoAtual == MODO_SELECAO && !clicouEmBotao) {
                 selecionarPontoMaisProximo(&listaPontos, x, mouseYInvertido);
                 selecionarRetaMaisProxima(&listaRetas, x, mouseYInvertido);
-                selecionarPoli(&listaPoligonos, x, mouseYInvertido);
+                selecionarPoligonoMaisProximo(&listaPoligonos, x, mouseYInvertido);
                 glutPostRedisplay();
             }
 
