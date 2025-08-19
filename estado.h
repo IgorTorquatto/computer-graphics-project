@@ -35,7 +35,10 @@ extern int mouseXPreview;
 extern int mouseYPreview;
 extern int criandoPoligono;
 Poligono poligonoTemp;
+
+//Para transformações
 extern Ponto* pontoSelecionado;
+extern struct reta* retaSelecionada;
 
 
 #endif
