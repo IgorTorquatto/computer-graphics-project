@@ -32,7 +32,7 @@ void display() {
             glEnd();
         }
 
-        // Desenhar preview do segmento atual do polígono
+        // Desenhar preview do segmento atual do polï¿½gono
         if (modoAtual == MODO_POLIGONO && criandoPoligono && poligonoTemp.numVertices > 0) {
             double lastX = poligonoTemp.verticesX[poligonoTemp.numVertices - 1];
             double lastY = poligonoTemp.verticesY[poligonoTemp.numVertices - 1];
@@ -86,6 +86,20 @@ void teclado(unsigned char key, int x, int y) {
         return;
     }
 
+    if(retaSelecionada && key == 'r'){
+        printf("Reta rodando \n");
+        rotacionarReta(retaSelecionada);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(poliSelecionado && key == 'r'){
+        printf("Poligono rodando \n");
+        rotacionarPoli(poliSelecionado);
+        glutPostRedisplay();
+        return;
+    }
+
     // Outras teclas
 }
 
@@ -111,8 +125,15 @@ void specialKeys(int key, int x, int y) {
         transladarReta(retaSelecionada, dx, dy);
     }
 
+    if(poliSelecionado){
+        printf("transladando poligono \n");
+        transladarPoli(poliSelecionado,dx,dy);
+    }
+
     glutPostRedisplay();
 }
+
+
 
 
 void init() {
@@ -126,7 +147,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(windowWidth, windowHeight);
-    glutCreateWindow("Trabalho Computação Gráfica");
+    glutCreateWindow("Trabalho Computaï¿½ï¿½o Grï¿½fica");
 
     inicializarEstados();
     init();
@@ -137,9 +158,9 @@ int main(int argc, char** argv) {
     glutSpecialFunc(specialKeys);
 
 
-    //Pré-visualização segmento de retae poligono
-    glutMotionFunc(motionMouse);         // com botão pressionado
-    glutPassiveMotionFunc(motionMouse);  // sem botão pressionado
+    //Prï¿½-visualizaï¿½ï¿½o segmento de retae poligono
+    glutMotionFunc(motionMouse);         // com botï¿½o pressionado
+    glutPassiveMotionFunc(motionMouse);  // sem botï¿½o pressionado
 
 
     glutMainLoop();

@@ -8,12 +8,12 @@ ListaPontos listaPontos;
 ListaRetas listaRetas;
 ListaPoligonos listaPoligonos;
 
-// Para criar pré-visualização do segmento de reta
+// Para criar prï¿½-visualizaï¿½ï¿½o do segmento de reta
 int criandoReta = 0;
 double retaTempX1, retaTempY1;
 double retaTempX2, retaTempY2;
 
-//Para a criação de polígonos
+//Para a criaï¿½ï¿½o de polï¿½gonos
 int criandoPoligono = 0;
 int mouseXPreview = 0;
 int mouseYPreview = 0;
@@ -25,6 +25,7 @@ void inicializarEstados() {
     criarListaPoligonos(&listaPoligonos);
 }
 
-//Para transformações
+//Para transformaï¿½ï¿½es
 Ponto* pontoSelecionado = NULL;
 struct reta* retaSelecionada = NULL;
+Poligono* poliSelecionado = NULL;

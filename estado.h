@@ -25,20 +25,20 @@ extern ListaPontos listaPontos;
 extern ListaRetas listaRetas;
 extern ListaPoligonos listaPoligonos;
 
-//Para criar pré-visualização no segmento de reta
+//Para criar prï¿½-visualizaï¿½ï¿½o no segmento de reta
 extern int criandoReta;
 extern double retaTempX1, retaTempY1;
 extern double retaTempX2, retaTempY2;
 
-// Para pré-visualização do segmento do polígono
+// Para prï¿½-visualizaï¿½ï¿½o do segmento do polï¿½gono
 extern int mouseXPreview;
 extern int mouseYPreview;
 extern int criandoPoligono;
 Poligono poligonoTemp;
 
-//Para transformações
+//Para transformaï¿½ï¿½es
 extern Ponto* pontoSelecionado;
 extern struct reta* retaSelecionada;
-
+extern Poligono* poliSelecionado;
 
 #endif
