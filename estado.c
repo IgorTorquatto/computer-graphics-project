@@ -25,3 +25,7 @@ void inicializarEstados() {
     criarListaPoligonos(&listaPoligonos);
 }
 
+//Para transformações
+Ponto* pontoSelecionado = NULL;
+struct reta* retaSelecionada = NULL;
+Poligono* poliSelecionado = NULL;

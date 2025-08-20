@@ -138,7 +138,7 @@ int pickReta(double x0, double y0, double x1, double y1, double mx, double my, d
     }
 }
 
-void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
+/*void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
     NoReta* atual = lista->inicio;
     const double tolerancia = 5.0;
 
@@ -153,6 +153,31 @@ void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
                 temp = temp->prox;
             }
             atual->reta.selected = 1;
+            break;
+        }
+        atual = atual->prox;
+    }
+}*/
+
+void selecionarRetaMaisProxima(ListaRetas* lista, int x, int y) {
+    NoReta* atual = lista->inicio;
+    double tolerancia = 5.0;
+
+    // desmarca todas
+    while (atual) {
+        atual->reta.selected = 0;
+        atual = atual->prox;
+    }
+
+    retaSelecionada = NULL; // reseta seleção
+
+    // procura a primeira reta dentro da tolerância
+    atual = lista->inicio;
+    while (atual) {
+        // check se o ponto (x, y) está perto da reta
+        if (pickReta(atual->reta.x1, atual->reta.y1, atual->reta.x2, atual->reta.y2, x, y, tolerancia)) {
+            atual->reta.selected = 1;
+            retaSelecionada = &atual->reta; // guarda para usar no teclado
             break;
         }
         atual = atual->prox;

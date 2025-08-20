@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1752852341 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
+1755625360 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
 	<GL/glut.h>
 	<math.h>
 	"menu.h"
@@ -8,7 +8,7 @@
 	"interface.h"
 	"listaPoligonos.h"
 
-1752882675 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\main.c
+1755642483 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\main.c
 	<stdio.h>
 	<stdlib.h>
 	<GL/freeglut.h>
@@ -18,6 +18,8 @@
 	"interface.h"
 	"estado.h"
 	"listaPoligonos.h"
+	"listaPontos.h"
+	"transformacoes.h"
 
 1426360528 c:\program files\codeblocks\mingw\include\gl\freeglut.h
 	"freeglut_std.h"
@@ -40,14 +42,14 @@
 1426360528 c:\program files\codeblocks\mingw\include\gl\glut.h
 	"freeglut_std.h"
 
-1752703200 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.h
+1755628171 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.h
 	"estado.h"
 
-1752847297 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.c
+1755642893 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.c
 	"estado.h"
 	"interface.h"
 
-1752850775 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
+1755635874 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
 	<GL/glut.h>
 	"menu.h"
 	"estado.h"
@@ -55,71 +57,72 @@
 	"listaPontos.h"
 	"listaRetas.h"
 
-1754768364 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.c
+1755633481 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.c
 	<stdlib.h>
 	<GL/freeglut.h>
 	"listaPontos.h"
+	"estado.h"
 
-1752845710 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estruturas.h
+1755625360 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estruturas.h
 	<stdio.h>
 
-1752766230 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.h
+1755633648 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.h
 	"estruturas.h"
 
-1752847007 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.h
+1755637244 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\estado.h
 	"estruturas.h"
 	"listaPontos.h"
 	"listaRetas.h"
 	"listaPoligonos.h"
 
-1754767967 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.h
+1755633466 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.h
 	"estruturas.h"
 
-1754772815 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listaretas.h
+1755641773 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listaretas.h
 	"estruturas.h"
 
-1754772152 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listaretas.c
+1755642230 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listaretas.c
 	"listaRetas.h"
 	<GL/glut.h>
 	<stdlib.h>
 	<math.h>
 	"estado.h"
 
-1752852422 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.h
+1755625360 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.h
 	"estruturas.h"
 
-1752882634 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
+1755625360 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
 	"listaPoligonos.h"
 	<stdlib.h>
 	<GL/glut.h>
 	<math.h>
 
-1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estado.c
+1755688110 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estado.c
 	"estado.h"
 	"interface.h"
 
-1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estado.h
+1755688609 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estado.h
 	"estruturas.h"
 	"listaPontos.h"
 	"listaRetas.h"
 	"listaPoligonos.h"
 
-1755169228 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estruturas.h
+1755644215 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\estruturas.h
 	<stdio.h>
 
-1755534869 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.h
+1755644215 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.h
 	"estruturas.h"
 
-1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.h
+1755644215 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.h
 	"estruturas.h"
 
-1755344339 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.h
+1755644215 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.h
 	"estruturas.h"
 
-1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\interface.h
+1755644215 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\interface.h
 	"estruturas.h"
 
-1754773610 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\interface.c
+1755644215 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\interface.c
 	<GL/glut.h>
 	"menu.h"
 	"estado.h"
@@ -127,28 +130,30 @@
 	"listaPontos.h"
 	"listaRetas.h"
 
-1754773610 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.h
+1755644215 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.h
 	"estado.h"
 
-1755455949 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.c
+1755688622 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapoligonos.c
 	"listaPoligonos.h"
 	<stdlib.h>
 	<GL/glut.h>
 	<math.h>
+	"estado.h"
 
-1755534849 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.c
+1755644215 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listapontos.c
 	<stdlib.h>
 	<GL/freeglut.h>
 	"listaPontos.h"
+	"estado.h"
 
-1755169402 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.c
+1755644215 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\listaretas.c
 	"listaRetas.h"
 	<GL/glut.h>
 	<stdlib.h>
 	<math.h>
 	"estado.h"
 
-1755465614 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\main.c
+1755696706 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\main.c
 	<stdio.h>
 	<stdlib.h>
 	<GL/freeglut.h>
@@ -158,8 +163,10 @@
 	"interface.h"
 	"estado.h"
 	"listaPoligonos.h"
+	"listaPontos.h"
+	"transformacoes.h"
 
-1755344433 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.c
+1755644215 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\menu.c
 	<GL/glut.h>
 	<math.h>
 	"menu.h"
@@ -167,4 +174,18 @@
 	"estado.h"
 	"interface.h"
 	"listaPoligonos.h"
+
+1755644044 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\transformacoes.c
+	"transformacoes.h"
+	<math.h>
+
+1755644070 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\transformacoes.h
+	"estruturas.h"
+
+1755691548 c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\transformacoes.h
+	"estruturas.h"
+
+1755697009 source:c:\users\marce\documents\joão\faculdade_9\cg\codigo\computer-graphics-project-main\transformacoes.c
+	"transformacoes.h"
+	<math.h>
 

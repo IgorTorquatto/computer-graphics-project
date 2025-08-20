@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 #include <math.h>
+#include "estado.h"
 
 void criarListaPoligonos(ListaPoligonos* lista) {
     lista->inicio = NULL;
@@ -89,15 +90,23 @@ void selecionarPoli(ListaPoligonos* lista, int x, int y){
     NoPoligono* atual = lista->inicio;
     int count = 0;
 
+    while (atual) {
+        atual->poligono.selected = 0;
+        atual = atual->prox;
+    }
+
+    poliSelecionado = NULL; // reseta seleção
+
+    // procura a primeira reta dentro da tolerância
+    atual = lista->inicio;
+
     while(atual != NULL){
         // p recebe o primeiro da lista
         Poligono* p = &atual->poligono;
         count = 0;
 
-        printf("---------------------------------- \n");
 
         for(int i = 0; i < p->numVertices; i++){
-            //printf("%d para a reta %d \n", count,i);
             int j;
             if(i == p->numVertices-1){
                 j = 0;
@@ -110,7 +119,6 @@ void selecionarPoli(ListaPoligonos* lista, int x, int y){
             if(i == 0){
                 esp = p->numVertices-1;
             }else esp = i-1;
-            //problema, o codigo via apenas i e j como 1 e 2; Ele nao via como 2 e 1;
 
             //aqui a reta nao é selecionada;
             if((p->verticesY[i] > y && p->verticesY[j] > y) || (p->verticesY[i] < y && p->verticesY[j] < y) || (p->verticesX[i] < x && p->verticesX[j] < x)){
@@ -127,30 +135,31 @@ void selecionarPoli(ListaPoligonos* lista, int x, int y){
             }
 
             if(p->verticesY[i] == p->verticesY[j] && p->verticesY[i] == y){
-                printf("Nao seleciona ne \n");
+                //printf("Nao seleciona ne \n");
+                count = count;
             }else if(caso == 1){
-                printf("Nao selecionada \n");
-                printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+                count = count;
+                //printf("Nao selecionada \n");
+                //printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
             }else if(caso == 2){
                 float xi;
                 xi = p->verticesX[i] + ((y - p->verticesY[i])*(p->verticesX[j] - p->verticesX[i]) / (p->verticesY[j] - p->verticesY[i]));
-                printf("o valor da intersecao eh: %f \n", xi);
-                printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
                 if(xi > (float)x){
                     count++;
-                    printf("%d Nao trivial para a reta %d\n",count,i);
+                    //printf("%d Nao trivial para a reta %d\n",count,i);
                     //printf("Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
                 }
             }else if(caso == 3){
                 if(p->verticesY[i] == y){
                     if((p->verticesY[esp] > y && p->verticesY[j] < y) || (p->verticesY[esp] < y && p->verticesY[j] > y)){
                         count++;
-                    }else printf("Nao contamos essa reta \n");
-                }else printf("Nao contamos essa reta \n");
-            }else printf("AAAAAA \n Mouse x: %d , Mouse y: %d , Ponto 1 %f %f , Ponto 2 %f %f \n", x, y, p->verticesX[i], p->verticesY[i], p->verticesX[j], p->verticesY[j]);
+                    }else count = count;
+                }else count = count;
+            }else count = count;
         }
         if(count%2 != 0){
-            p->selected = !p->selected;
+            p->selected = 1;
+            poliSelecionado = &atual->poligono;
         }
         atual = atual->prox;
     }
