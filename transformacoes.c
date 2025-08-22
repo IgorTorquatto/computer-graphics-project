@@ -220,3 +220,184 @@ void transladarPoli(Poligono *poli,double deslocX, double deslocY){
     }
 }
 
+void getCentroReta(Reta *reta,float *centrox, float *centroy){
+    *centrox = (reta->x1 + reta->x2)/2;
+    *centroy = (reta->y1 + reta->y2)/2;
+}
+
+void getCentroPoli(Poligono *poli, float *centrox, float *centroy){
+    *centrox = 0;
+    *centroy = 0;
+
+    for(int i=0; i<poli->numVertices; i++){
+        *centrox += poli->verticesX[i];
+        *centroy += poli->verticesY[i];
+    }
+
+    *centrox = *centrox/poli->numVertices;
+    *centroy = *centroy/poli->numVertices;
+}
+
+void cisalharReta(Reta *reta, int direcao){
+    double matrizh[3][3] = {{1,0.1,0},{0,1,0},{0,0,1}};
+    double matrizv[3][3] = {{1,0,0},{0.1,1,0},{0,0,1}};
+    float a,b;
+    getCentroReta(reta,&a,&b);
+    printf(" %f %f \n", a,b);
+    printf(" ponto1 : %f %f, \n ponto2 : %f %f, \n centro %f %f \n",reta->x1,reta->y1,reta->x2,reta->y2,a,b);
+    double trans[3][3];
+    double result[3][3];
+
+    switch(direcao){
+    case 1: // cisalha horizontal;
+        criarMatrizTrans(trans,(double)a,(double)b);
+        multiplicarMatrizes(trans,matrizh,result);
+        criarMatrizTrans(trans,(double)-a,(double)-b);
+        multiplicarMatrizes(result,trans,matrizh);
+
+        aplicarMatrizNaReta(reta,matrizh);
+        getCentroReta(reta,&a,&b);
+        printf(" ponto1 : %f %f, \n ponto2 : %f %f, \n centro %f %f \n",reta->x1,reta->y1,reta->x2,reta->y2,a,b);
+
+        break;
+    case 2: //cisalha vertical;
+        criarMatrizTrans(trans,(double)a,(double)b);
+        multiplicarMatrizes(trans,matrizv,result);
+        criarMatrizTrans(trans,(double)-a,(double)-b);
+        multiplicarMatrizes(result,trans,matrizv);
+
+        aplicarMatrizNaReta(reta,matrizv);
+        getCentroReta(reta,&a,&b);
+        printf(" ponto1 : %f %f, \n ponto2 : %f %f, \n centro %f %f \n",reta->x1,reta->y1,reta->x2,reta->y2,a,b);
+        break;
+    }
+}
+
+void cisalharPoli(Poligono *poli, int direcao){
+    double matrizh[3][3] = {{1,0.1,0},{0,1,0},{0,0,1}};
+    double matrizv[3][3] = {{1,0,0},{0.1,1,0},{0,0,1}};
+    float a,b;
+    getCentroPoli(poli,&a,&b);
+    //printf(" %f %f \n", a,b);
+    //printf(" ponto1 : %f %f, \n ponto2 : %f %f, \n centro %f %f \n",reta->x1,reta->y1,reta->x2,reta->y2,a,b);
+    double trans[3][3];
+    double result[3][3];
+
+    switch(direcao){
+    case 1: // cisalha horizontal;
+        criarMatrizTrans(trans,(double)a,(double)b);
+        multiplicarMatrizes(trans,matrizh,result);
+        criarMatrizTrans(trans,(double)-a,(double)-b);
+        multiplicarMatrizes(result,trans,matrizh);
+
+        aplicarMatrizNoPoli(poli,matrizh);
+        //getCentroReta(reta,&a,&b);
+        //printf(" ponto1 : %f %f, \n ponto2 : %f %f, \n centro %f %f \n",reta->x1,reta->y1,reta->x2,reta->y2,a,b);
+
+        break;
+    case 2: //cisalha vertical;
+        criarMatrizTrans(trans,(double)a,(double)b);
+        multiplicarMatrizes(trans,matrizv,result);
+        criarMatrizTrans(trans,(double)-a,(double)-b);
+        multiplicarMatrizes(result,trans,matrizv);
+
+        aplicarMatrizNoPoli(poli,matrizv);
+        //getCentroReta(reta,&a,&b);
+        //printf(" ponto1 : %f %f, \n ponto2 : %f %f, \n centro %f %f \n",reta->x1,reta->y1,reta->x2,reta->y2,a,b);
+        break;
+    }
+}
+
+void criarMatrizEscala(double result[3][3], double valor){
+    for(int i =0; i< 3; i++){
+        for(int j = 0; j<3; j++){
+            if((i==0 && j==0) || (i==1 && j==1)){
+                result[i][j] = valor;
+            }else if(i==2 && j== 2){
+                result[i][j] = 1;
+            }else result[i][j] = 0;
+        }
+    }
+}
+
+void escalarReta(Reta *reta,float valor){
+    double escala[3][3] = {0};
+    double aux[3][3] = {0};
+    double result[3][3] = {0};
+    float x,y;
+    getCentroReta(reta,&x,&y);
+
+    criarMatrizEscala(escala,valor);
+    criarMatrizTrans(aux,(double)x,(double)y);
+    multiplicarMatrizes(aux,escala,result);
+    criarMatrizTrans(aux,(double)-x,(double)-y);
+    multiplicarMatrizes(result,aux,escala);
+
+    aplicarMatrizNaReta(reta,escala);
+
+}
+
+void escalarPoli(Poligono *poli, float valor){
+    double escala[3][3] = {0};
+    double aux[3][3] = {0};
+    double result[3][3] = {0};
+    float x,y;
+    getCentroPoli(poli,&x,&y);
+
+    criarMatrizEscala(escala,valor);
+    criarMatrizTrans(aux,(double)x,(double)y);
+    multiplicarMatrizes(aux,escala,result);
+    criarMatrizTrans(aux,(double)-x,(double)-y);
+    multiplicarMatrizes(result,aux,escala);
+
+    aplicarMatrizNoPoli(poli,escala);
+}
+
+void refletirReta(Reta *reta, int direcao){
+    double refletirH[3][3] = {{-1,0,0},{0,1,0},{0,0,1}};
+    double refletirV[3][3] = {{1,0,0},{0,-1,0},{0,0,1}};
+    double aux[3][3] = {0};
+    double result[3][3] = {0};
+    float x,y;
+    getCentroReta(reta,&x,&y);
+
+    if(direcao == 1){ // reflexão horizontal
+        criarMatrizTrans(aux,x,y);
+        multiplicarMatrizes(aux,refletirH,result);
+        criarMatrizTrans(aux,-x,-y);
+        multiplicarMatrizes(result,aux,refletirH);
+        aplicarMatrizNaReta(reta,refletirH);
+    }else{
+        criarMatrizTrans(aux,x,y);
+        multiplicarMatrizes(aux,refletirV,result);
+        criarMatrizTrans(aux,-x,-y);
+        multiplicarMatrizes(result,aux,refletirV);
+        aplicarMatrizNaReta(reta,refletirV);
+    }
+
+}
+
+void refletirPoli(Poligono *poli, int direcao){
+    double refletirH[3][3] = {{-1,0,0},{0,1,0},{0,0,1}};
+    double refletirV[3][3] = {{1,0,0},{0,-1,0},{0,0,1}};
+    double aux[3][3] = {0};
+    double result[3][3] = {0};
+    float x,y;
+    getCentroPoli(poli,&x,&y);
+
+    if(direcao == 1){ // reflexão horizontal
+        criarMatrizTrans(aux,x,y);
+        multiplicarMatrizes(aux,refletirH,result);
+        criarMatrizTrans(aux,-x,-y);
+        multiplicarMatrizes(result,aux,refletirH);
+        aplicarMatrizNoPoli(poli,refletirH);
+    }else{
+        criarMatrizTrans(aux,x,y);
+        multiplicarMatrizes(aux,refletirV,result);
+        criarMatrizTrans(aux,-x,-y);
+        multiplicarMatrizes(result,aux,refletirV);
+        aplicarMatrizNoPoli(poli,refletirV);
+    }
+
+}
+

@@ -100,6 +100,92 @@ void teclado(unsigned char key, int x, int y) {
         return;
     }
 
+    if(retaSelecionada && key == 'c'){
+        printf("Reta cisalhando horizontalmente \n");
+        cisalharReta(retaSelecionada,1);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(retaSelecionada && key == 'v'){
+        printf("Reta cisalhando verticalmente \n");
+        cisalharReta(retaSelecionada,2);
+        glutPostRedisplay();
+        return;
+    }
+
+     if(poliSelecionado && key == 'c'){
+        printf("Poligono cisalhando horizontalmente \n");
+        cisalharPoli(poliSelecionado,1);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(poliSelecionado && key == 'v'){
+        printf("Poligono cisalhando verticalmente \n");
+        cisalharPoli(poliSelecionado,2);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(retaSelecionada && key == 'm'){
+        printf("reta escalando \n");
+        escalarReta(retaSelecionada,1.5);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(retaSelecionada && key == 'n'){
+        printf("reta escalando \n");
+        escalarReta(retaSelecionada,0.666);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(poliSelecionado && key == 'm'){
+        printf("Poligono escalando \n");
+        escalarPoli(poliSelecionado,1.5);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(poliSelecionado && key == 'n'){
+        printf("Poligono escalando \n");
+        escalarPoli(poliSelecionado,0.666);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(retaSelecionada && key == 'd'){
+        printf("Reta sendo espelhada horizontalmente \n");
+        refletirReta(retaSelecionada,1);
+        glutPostRedisplay();
+        return;
+    }
+    if(retaSelecionada && key == 'w'){
+        printf("Reta sendo espelhada verticalmente \n");
+        refletirReta(retaSelecionada,2);
+        glutPostRedisplay();
+        return;
+    }
+
+    if(poliSelecionado && key == 'd'){
+        printf("Poligono sendo espelhado horizontalmente \n");
+        refletirPoli(poliSelecionado,1);
+        glutPostRedisplay();
+        return;
+    }
+    if(poliSelecionado && key == 'w'){
+        printf("Poligono sendo espelhado verticalmente \n");
+        refletirPoli(poliSelecionado,2);
+        glutPostRedisplay();
+        return;
+    }
+
+
+
+
+
     // Outras teclas
 }
 
