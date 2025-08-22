@@ -214,7 +214,7 @@
 1755885487 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.h
 	"estruturas.h"
 
-1755885073 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
+1755888572 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\interface.c
 	<GL/glut.h>
 	"menu.h"
 	"estado.h"
@@ -225,27 +225,27 @@
 1755885787 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.h
 	"estado.h"
 
-1755879854 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
+1755885565 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapoligonos.c
 	"listaPoligonos.h"
 	<stdlib.h>
 	<GL/glut.h>
 	<math.h>
 	"estado.h"
 
-1755708770 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.c
+1755886474 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listapontos.c
 	<stdlib.h>
 	<GL/freeglut.h>
 	"listaPontos.h"
 	"estado.h"
 
-1755708770 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listaretas.c
+1755885634 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\listaretas.c
 	"listaRetas.h"
 	<GL/glut.h>
 	<stdlib.h>
 	<math.h>
 	"estado.h"
 
-1755884260 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
+1755888506 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\menu.c
 	<GL/glut.h>
 	<math.h>
 	"menu.h"
@@ -253,6 +253,7 @@
 	"estado.h"
 	"interface.h"
 	"listaPoligonos.h"
+	"save.h"
 
 1755877203 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\transformacoes.c
 	"transformacoes.h"
@@ -273,4 +274,15 @@
 	"listaPoligonos.h"
 	"listaPontos.h"
 	"transformacoes.h"
+
+1755889080 c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\save.h
+	"estruturas.h"
+	"estado.h"
+
+1755890818 source:c:\users\softex\downloads\[planejamento] ufca\[ufca] 2025.1\computação gráfica\trabalho\trabalho\save.c
+	<stdio.h>
+	<stdlib.h>
+	"estruturas.h"
+	"estado.h"
+	"save.h"
 

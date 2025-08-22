@@ -233,6 +233,9 @@ void clickInterface(int x, int y) {
     modoAtual = MODO_POLIGONO;
     criandoPoligono = 0;  // resetar estado anterior se necessário
     }
+    else if (cliqueDentroBotaoSalvar(x, y)) {
+    salvarTudo();
+    }
 }
 
 void converterCoordenadasMouseInterface(int mx, int my, double *xL, double *yL) {

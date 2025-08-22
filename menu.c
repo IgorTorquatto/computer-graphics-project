@@ -5,6 +5,7 @@
 #include "estado.h"
 #include "interface.h"
 #include "listaPoligonos.h"
+#include "save.h"
 
 #define windowWidth 800
 #define windowHeight 600
@@ -172,7 +173,8 @@ void mouseClick(int button, int state, int mx, int my) {
                         estadoAtual = APLICACAO_EXECUTANDO;
                         break;
                     case 1:
-                        // carregar projeto
+                        carregarTudo();
+                        estadoAtual = APLICACAO_EXECUTANDO;
                         break;
                     case 2:
                         exit(0);
