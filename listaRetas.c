@@ -79,6 +79,7 @@ void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
 
 
 // calcular código de região
+
 int codigo(double x, double y, double xmin, double xmax, double ymin, double ymax) {
     int code = 0; // 0000
     if (x < xmin) code |= 1;   // esquerda
@@ -87,9 +88,6 @@ int codigo(double x, double y, double xmin, double xmax, double ymin, double yma
     else if (y > ymax) code |= 8; // acima
     return code;
 }
-
-
-
 
 int pickReta(double x0, double y0, double x1, double y1, double mx, double my, double t) {
     double xmin = mx - t;

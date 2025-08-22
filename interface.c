@@ -171,15 +171,15 @@ void desenharInterface() {
 
 
   // Desenhar visualização do polígono em criação
-if (criandoPoligono && poligonoTemp.numVertices > 0) {
-    glColor3f(1.0, 0.0, 0.0);
-    glBegin(GL_LINE_STRIP);
-    for (int i = 0; i < poligonoTemp.numVertices; i++) {
-        glVertex2f(poligonoTemp.verticesX[i], poligonoTemp.verticesY[i]);
+    if (criandoPoligono && poligonoTemp.numVertices > 0) {
+        glColor3f(1.0, 0.0, 0.0);
+        glBegin(GL_LINE_STRIP);
+        for (int i = 0; i < poligonoTemp.numVertices; i++) {
+            glVertex2f(poligonoTemp.verticesX[i], poligonoTemp.verticesY[i]);
+        }
+        glVertex2f(mouseXPreview, mouseYPreview); // preview até o mouse
+        glEnd();
     }
-    glVertex2f(mouseXPreview, mouseYPreview); // preview até o mouse
-    glEnd();
-}
 
 
 }
@@ -235,7 +235,30 @@ void clickInterface(int x, int y) {
     }
 }
 
+void converterCoordenadasMouseInterface(int mx, int my, double *xL, double *yL) {
+    *xL = (double)mx / glutGet(GLUT_WINDOW_WIDTH) * windowWidth;
+    *yL = windowHeight - ((double)my / glutGet(GLUT_WINDOW_HEIGHT) * windowHeight);
+}
+
 void motionMouse(int x, int y) {
+    double xL, yL;
+    converterCoordenadasMouseInterface(x, y, &xL, &yL);
+
+    if (modoAtual == MODO_RETA && criandoReta) {
+        retaTempX2 = xL;
+        retaTempY2 = yL;
+        glutPostRedisplay();
+    }
+
+    if (modoAtual == MODO_POLIGONO && criandoPoligono) {
+        mouseXPreview = xL;
+        mouseYPreview = yL;
+        glutPostRedisplay();
+    }
+}
+
+
+/*void motionMouse(int x, int y) {
     if (modoAtual == MODO_RETA && criandoReta) {
         retaTempX2 = x;
         retaTempY2 = windowHeight - y;
@@ -247,5 +270,5 @@ void motionMouse(int x, int y) {
         mouseYPreview = windowHeight - y;
         glutPostRedisplay();
     }
-}
+}**/
 
