@@ -41,4 +41,6 @@ extern Ponto* pontoSelecionado;
 extern struct reta* retaSelecionada;
 extern Poligono* poliSelecionado;
 
+void inicializarEstados();
+
 #endif

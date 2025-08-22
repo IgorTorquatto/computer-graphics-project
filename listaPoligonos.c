@@ -29,12 +29,22 @@ void desenharPoligonos(ListaPoligonos* lista) {
     while (atual != NULL) {
         Poligono p = atual->poligono;
 
+        // Cor de preenchimento
         if (p.selected) {
-            glColor3f(1.0, 0.5, 0.0); // laranja para selecionados
+            glColor3f(1.0, 0.5, 0.0); // laranja se selecionado
         } else {
-            glColor3f(1.0,0.0,0.0);
+            glColor3f(1.0, 0.0, 0.0); // vermelho por padrão
         }
 
+        // Desenha preenchido
+        glBegin(GL_POLYGON);
+        for (int i = 0; i < p.numVertices; i++) {
+            glVertex2d(p.verticesX[i], p.verticesY[i]);
+        }
+        glEnd();
+
+        // Desenha o contorno em preto para destacar as bordas
+        glColor3f(0.0, 0.0, 0.0);
         glBegin(GL_LINE_LOOP);
         for (int i = 0; i < p.numVertices; i++) {
             glVertex2d(p.verticesX[i], p.verticesY[i]);
@@ -44,6 +54,7 @@ void desenharPoligonos(ListaPoligonos* lista) {
         atual = atual->prox;
     }
 }
+
 
 void ListaPoligonosInserirFim(ListaPoligonos* lista, Poligono p) {
     NoPoligono* novo = (NoPoligono*)malloc(sizeof(NoPoligono));
@@ -64,7 +75,7 @@ void ListaPoligonosInserirFim(ListaPoligonos* lista, Poligono p) {
     printf("Poligono criado. Total na lista: %d\n", lista->tamanho);
 }
 
-void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y) {
+/*void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y) {
     NoPoligono* atual = lista->inicio;
     const float distanciaMaxima = 10.0;
 
@@ -84,7 +95,7 @@ void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y) {
 
         atual = atual->prox;
     }
-}
+}*/
 
 void selecionarPoli(ListaPoligonos* lista, int x, int y){
     NoPoligono* atual = lista->inicio;

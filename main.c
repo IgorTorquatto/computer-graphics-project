@@ -52,7 +52,7 @@ void display() {
 }
 
 void teclado(unsigned char key, int x, int y) {
-    // Enter para poligono
+
     if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // Enter
         if (poligonoTemp.numVertices >= 3) {
             ListaPoligonosInserirFim(&listaPoligonos, poligonoTemp);
@@ -62,7 +62,6 @@ void teclado(unsigned char key, int x, int y) {
         return;
     }
 
-    // Backspace para deletar selecionados
     if (key == 8) { // Backspace
         if (estadoAtual == APLICACAO_EXECUTANDO && modoAtual == MODO_SELECAO) {
             deletarSelecionados(&listaPontos);
@@ -73,120 +72,88 @@ void teclado(unsigned char key, int x, int y) {
         }
     }
 
-    // R rotaciona pontos
-    if (pontoSelecionado && key == 'r') {
-        printf("rotacionando ponto\n");
-        double matriz[3][3];
-        Ponto centro; // origem
-        centro.x = 0;
-        centro.y = 0;
-        pegarMatrizRotacao(matriz, key, centro);
-        aplicarMatrizNoPonto(matriz, pontoSelecionado);
-        glutPostRedisplay();
-        return;
+    //Objetos Selecionados
+
+    if (pontoSelecionado) {
+        // ROTAÇÃO
+        if (key == 'r') {
+            printf("Rotacionando ponto\n");
+            double matriz[3][3];
+            Ponto centro = {0,0};
+            pegarMatrizRotacao(matriz, key, centro);
+            aplicarMatrizNoPonto(matriz, pontoSelecionado);
+        }
+    }
+    else if (retaSelecionada) {
+        // ROTAÇÃO
+        if (key == 'r') {
+            printf("Reta rodando\n");
+            rotacionarReta(retaSelecionada);
+        }
+        // CISALHAMENTO
+        else if (key == 'c') {
+            printf("Reta cisalhando horizontalmente\n");
+            cisalharReta(retaSelecionada, 1);
+        }
+        else if (key == 'v') {
+            printf("Reta cisalhando verticalmente\n");
+            cisalharReta(retaSelecionada, 2);
+        }
+        // ESCALA
+        else if (key == 'm') {
+            printf("Reta escalando (maior)\n");
+            escalarReta(retaSelecionada, 1.5);
+        }
+        else if (key == 'n') {
+            printf("Reta escalando (menor)\n");
+            escalarReta(retaSelecionada, 0.666);
+        }
+        // ESPELHAMENTO
+        else if (key == 'd') {
+            printf("Reta espelhada horizontalmente\n");
+            refletirReta(retaSelecionada, 1);
+        }
+        else if (key == 'w') {
+            printf("Reta espelhada verticalmente\n");
+            refletirReta(retaSelecionada, 2);
+        }
+    }
+    else if (poliSelecionado) {
+        // ROTAÇÃO
+        if (key == 'r') {
+            printf("Polígono rodando\n");
+            rotacionarPoli(poliSelecionado);
+        }
+        // CISALHAMENTO
+        else if (key == 'c') {
+            printf("Polígono cisalhando horizontalmente\n");
+            cisalharPoli(poliSelecionado, 1);
+        }
+        else if (key == 'v') {
+            printf("Polígono cisalhando verticalmente\n");
+            cisalharPoli(poliSelecionado, 2);
+        }
+        // ESCALA
+        else if (key == 'm') {
+            printf("Polígono escalando (maior)\n");
+            escalarPoli(poliSelecionado, 1.5);
+        }
+        else if (key == 'n') {
+            printf("Polígono escalando (menor)\n");
+            escalarPoli(poliSelecionado, 0.666);
+        }
+        // ESPELHAMENTO
+        else if (key == 'd') {
+            printf("Polígono espelhado horizontalmente\n");
+            refletirPoli(poliSelecionado, 1);
+        }
+        else if (key == 'w') {
+            printf("Polígono espelhado verticalmente\n");
+            refletirPoli(poliSelecionado, 2);
+        }
     }
 
-    if(retaSelecionada && key == 'r'){
-        printf("Reta rodando \n");
-        rotacionarReta(retaSelecionada);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(poliSelecionado && key == 'r'){
-        printf("Poligono rodando \n");
-        rotacionarPoli(poliSelecionado);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(retaSelecionada && key == 'c'){
-        printf("Reta cisalhando horizontalmente \n");
-        cisalharReta(retaSelecionada,1);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(retaSelecionada && key == 'v'){
-        printf("Reta cisalhando verticalmente \n");
-        cisalharReta(retaSelecionada,2);
-        glutPostRedisplay();
-        return;
-    }
-
-     if(poliSelecionado && key == 'c'){
-        printf("Poligono cisalhando horizontalmente \n");
-        cisalharPoli(poliSelecionado,1);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(poliSelecionado && key == 'v'){
-        printf("Poligono cisalhando verticalmente \n");
-        cisalharPoli(poliSelecionado,2);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(retaSelecionada && key == 'm'){
-        printf("reta escalando \n");
-        escalarReta(retaSelecionada,1.5);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(retaSelecionada && key == 'n'){
-        printf("reta escalando \n");
-        escalarReta(retaSelecionada,0.666);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(poliSelecionado && key == 'm'){
-        printf("Poligono escalando \n");
-        escalarPoli(poliSelecionado,1.5);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(poliSelecionado && key == 'n'){
-        printf("Poligono escalando \n");
-        escalarPoli(poliSelecionado,0.666);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(retaSelecionada && key == 'd'){
-        printf("Reta sendo espelhada horizontalmente \n");
-        refletirReta(retaSelecionada,1);
-        glutPostRedisplay();
-        return;
-    }
-    if(retaSelecionada && key == 'w'){
-        printf("Reta sendo espelhada verticalmente \n");
-        refletirReta(retaSelecionada,2);
-        glutPostRedisplay();
-        return;
-    }
-
-    if(poliSelecionado && key == 'd'){
-        printf("Poligono sendo espelhado horizontalmente \n");
-        refletirPoli(poliSelecionado,1);
-        glutPostRedisplay();
-        return;
-    }
-    if(poliSelecionado && key == 'w'){
-        printf("Poligono sendo espelhado verticalmente \n");
-        refletirPoli(poliSelecionado,2);
-        glutPostRedisplay();
-        return;
-    }
-
-
-
-
-
-    // Outras teclas
+    glutPostRedisplay();
 }
 
 void specialKeys(int key, int x, int y) {
@@ -200,6 +167,8 @@ void specialKeys(int key, int x, int y) {
         case GLUT_KEY_DOWN:  dy = -passo; break;
         default: return;
     }
+
+    // TRANSLAÇÃO
 
     if (pontoSelecionado) {
         printf("transladando ponto \n");
@@ -219,9 +188,6 @@ void specialKeys(int key, int x, int y) {
     glutPostRedisplay();
 }
 
-
-
-
 void init() {
     glClearColor(0.529, 0.808, 0.922, 1.0); // azul claro
     glMatrixMode(GL_PROJECTION);
@@ -233,7 +199,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(windowWidth, windowHeight);
-    glutCreateWindow("Trabalho Computa��o Gr�fica");
+    glutCreateWindow("Trabalho Computacao Grafica");
 
     inicializarEstados();
     init();
