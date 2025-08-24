@@ -55,9 +55,13 @@ void teclado(unsigned char key, int x, int y) {
 
     if (modoAtual == MODO_POLIGONO && criandoPoligono && key == 13) { // Enter
         if (poligonoTemp.numVertices >= 3) {
+            //insere o polígono temporário na lista
             ListaPoligonosInserirFim(&listaPoligonos, poligonoTemp);
+            printf("Polígono criado com %d vértices\n", poligonoTemp.numVertices);
+        } else {
+            printf("Um polígono precisa ter pelo menos 3 vértices\n");
         }
-        criandoPoligono = 0;
+        criandoPoligono = 0; //finaliza modo de criação
         glutPostRedisplay();
         return;
     }

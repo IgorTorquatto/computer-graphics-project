@@ -24,7 +24,7 @@ void inserirPonto(ListaPontos* lista, double x, double y) {
 
 void desenharPontos(ListaPontos* lista) {
     NoPonto* atual = lista->inicio;
-    glPointSize(10.0f);
+    glPointSize(7.0f);
     glBegin(GL_POINTS);
     while (atual) {
         if (atual->ponto.selected)

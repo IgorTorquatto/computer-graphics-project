@@ -28,7 +28,7 @@ void ListaRetasInserirFim(ListaRetas* lista, Reta r) {
 
 void desenharRetas(ListaRetas* lista) {
     NoReta* atual = lista->inicio;
-    glLineWidth(10.0f);
+    glLineWidth(7.0f);
     glBegin(GL_LINES);
     while (atual) {
         if (atual->reta.selected) {
@@ -50,33 +50,6 @@ void desenharRetas(ListaRetas* lista) {
 
     glEnd();
 }
-
-
-/*
-Algoritmo de seleção antigo baseado na distância da reta
-void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
-    NoReta* atual = lista->inicio;
-    while (atual) {
-        // Seleciona se o ponto está próximo da reta (tolerância de 5 pixels)
-        double dx = atual->reta.x2 - atual->reta.x1;
-        double dy = atual->reta.y2 - atual->reta.y1;
-        double len = sqrt(dx * dx + dy * dy);
-        if (len == 0) { atual = atual->prox; continue; }
-
-        double t = ((x - atual->reta.x1) * dx + (y - atual->reta.y1) * dy) / (len * len);
-        if (t >= 0 && t <= 1) {
-            double proj_x = atual->reta.x1 + t * dx;
-            double proj_y = atual->reta.y1 + t * dy;
-            double dist = sqrt((x - proj_x) * (x - proj_x) + (y - proj_y) * (y - proj_y));
-            if (dist <= 5.0) {
-                atual->reta.selected = !atual->reta.selected;
-                break;
-            }
-        }
-        atual = atual->prox;
-    }
-}*/
-
 
 // calcular código de região
 
@@ -135,27 +108,6 @@ int pickReta(double x0, double y0, double x1, double y1, double mx, double my, d
         }
     }
 }
-
-/*void selecionarRetaMaisProxima(ListaRetas* lista, double x, double y) {
-    NoReta* atual = lista->inicio;
-    const double tolerancia = 5.0;
-
-    while (atual) {
-        if (pickReta(atual->reta.x1, atual->reta.y1,
-                     atual->reta.x2, atual->reta.y2,
-                     x, y, tolerancia)) {
-            // Apenas um selecionado por vez
-            NoReta* temp = lista->inicio;
-            while (temp) {
-                temp->reta.selected = 0;
-                temp = temp->prox;
-            }
-            atual->reta.selected = 1;
-            break;
-        }
-        atual = atual->prox;
-    }
-}*/
 
 void selecionarRetaMaisProxima(ListaRetas* lista, int x, int y) {
     NoReta* atual = lista->inicio;
