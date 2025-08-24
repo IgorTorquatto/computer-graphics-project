@@ -173,7 +173,7 @@ void mouseClick(int button, int state, int mx, int my) {
                         estadoAtual = APLICACAO_EXECUTANDO;
                         break;
                     case 1:
-                        carregarTudo();
+                        carregarTela("save_tela.txt", &listaPontos, &listaRetas, &listaPoligonos);
                         estadoAtual = APLICACAO_EXECUTANDO;
                         break;
                     case 2:

@@ -230,11 +230,11 @@ void clickInterface(int x, int y) {
         modoAtual = MODO_RETA;
     }
     else if (cliqueDentroBotaoPoligono(x, y)) {
-    modoAtual = MODO_POLIGONO;
-    criandoPoligono = 0;  // resetar estado anterior se necessário
+        modoAtual = MODO_POLIGONO;
+        criandoPoligono = 0;  // resetar estado anterior se necessário
     }
     else if (cliqueDentroBotaoSalvar(x, y)) {
-    salvarTudo();
+        salvarTela("save_tela.txt", &listaPontos, &listaRetas, &listaPoligonos);
     }
 }
 

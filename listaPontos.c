@@ -107,5 +107,23 @@ Ponto* getPontoSelecionado(ListaPontos* lista) {
     return NULL;
 }
 
+void ListaPontosInserirFim(ListaPontos* lista, Ponto p) {
+    NoPonto* novo = (NoPonto*)malloc(sizeof(NoPonto));
+    novo->ponto = p;
+    novo->prox = NULL;
+
+    if (!lista->inicio) {
+
+        lista->inicio = novo;
+    } else {
+
+        NoPonto* atual = lista->inicio;
+        while (atual->prox) atual = atual->prox;
+        atual->prox = novo;
+    }
+
+    lista->contador++;
+    printf("Total de pontos: %d\n", lista->contador);
+}
 
 
