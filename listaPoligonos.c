@@ -44,7 +44,7 @@ void desenharPoligonos(ListaPoligonos* lista) {
         }
 
         //contorno
-        glColor3f(0.0, 0.0, 0.0);
+        glColor3f(1.0, 0.0, 0.0);
         glBegin(GL_LINE_LOOP);
         for (int i = 0; i < p.numVertices; i++)
             glVertex2d(p.verticesX[i], p.verticesY[i]);

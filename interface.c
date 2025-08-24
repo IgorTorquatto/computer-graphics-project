@@ -259,19 +259,3 @@ void motionMouse(int x, int y) {
         glutPostRedisplay();
     }
 }
-
-
-/*void motionMouse(int x, int y) {
-    if (modoAtual == MODO_RETA && criandoReta) {
-        retaTempX2 = x;
-        retaTempY2 = windowHeight - y;
-        glutPostRedisplay();
-    }
-
-    if (modoAtual == MODO_POLIGONO && criandoPoligono) {
-        mouseXPreview = x;
-        mouseYPreview = windowHeight - y;
-        glutPostRedisplay();
-    }
-}**/
-

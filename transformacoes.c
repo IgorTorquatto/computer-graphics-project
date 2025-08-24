@@ -100,6 +100,56 @@ void criarMatrizRotPoli(Poligono *poli, double result[3][3]){
     multiplicarMatrizes(C,A,result);
 }
 
+void criarMatrizRotRetaInversa(Reta *reta, double result[3][3]){
+    double A[3][3], B[3][3], C[3][3];
+
+    double passoAngulo = -2 * (M_PI / 180.0);
+    double cosseno = cos(passoAngulo);
+    double seno   = sin(passoAngulo);
+
+    double matrizRotacao[3][3] = {
+        {cosseno, -seno, 0.0},
+        {seno,    cosseno, 0.0},
+        {0.0,     0.0,    1.0}
+    };
+
+    double centrox = (reta->x1 + reta->x2)/2;
+    double centroy = (reta->y1 + reta->y2)/2;
+
+    criarMatrizTrans(A,-centrox,-centroy);
+    criarMatrizTrans(B,centrox,centroy);
+    multiplicarMatrizes(B, matrizRotacao, C);
+    multiplicarMatrizes(C, A, result);
+}
+
+void criarMatrizRotPoliInversa(Poligono *poli, double result[3][3]){
+    double A[3][3], B[3][3], C[3][3];
+
+    double passoAngulo = -2 * (M_PI / 180.0);
+    double cosseno = cos(passoAngulo);
+    double seno   = sin(passoAngulo);
+
+    double matrizRotacao[3][3] = {
+        {cosseno, -seno, 0.0},
+        {seno,    cosseno, 0.0},
+        {0.0,     0.0,    1.0}
+    };
+
+    double centrox = 0;
+    double centroy = 0;
+    for(int i=0;i<poli->numVertices;i++){
+        centrox += poli->verticesX[i];
+        centroy += poli->verticesY[i];
+    }
+    centrox /= poli->numVertices;
+    centroy /= poli->numVertices;
+
+    criarMatrizTrans(A,-centrox,-centroy);
+    criarMatrizTrans(B,centrox,centroy);
+    multiplicarMatrizes(B, matrizRotacao, C);
+    multiplicarMatrizes(C, A, result);
+}
+
 void aplicarMatrizNoPoli(Poligono* poli, double matriz[3][3]){
     Ponto ponto;
     for(int i=0; i< poli->numVertices;i++){
@@ -137,6 +187,18 @@ void rotacionarPoli(Poligono *poli){
     double rot[3][3] = {0};
     criarMatrizRotPoli(poli,rot);
     aplicarMatrizNoPoli(poli,rot);
+}
+
+void rotacionarRetaInversa(Reta *reta){
+    double rot[3][3] = {0};
+    criarMatrizRotRetaInversa(reta, rot);
+    aplicarMatrizNaReta(reta, rot);
+}
+
+void rotacionarPoliInversa(Poligono *poli){
+    double rot[3][3] = {0};
+    criarMatrizRotPoliInversa(poli, rot);
+    aplicarMatrizNoPoli(poli, rot);
 }
 
 // Fun��o para transladar (mover) um ponto
