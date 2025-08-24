@@ -94,6 +94,11 @@ void teclado(unsigned char key, int x, int y) {
             printf("Reta rodando\n");
             rotacionarReta(retaSelecionada);
         }
+
+        else if (key == 't') {
+            printf("Reta rodando inversamente\n");
+            rotacionarRetaInversa(retaSelecionada);
+        }
         // CISALHAMENTO
         else if (key == 'c') {
             printf("Reta cisalhando horizontalmente\n");
@@ -127,6 +132,10 @@ void teclado(unsigned char key, int x, int y) {
         if (key == 'r') {
             printf("Polígono rodando\n");
             rotacionarPoli(poliSelecionado);
+        }
+        else if (key == 't') {
+            printf("Polígono rodando inversamente\n");
+            rotacionarPoliInversa(poliSelecionado);
         }
         // CISALHAMENTO
         else if (key == 'c') {

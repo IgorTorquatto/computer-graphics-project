@@ -27,6 +27,10 @@ void escalarReta(Reta *reta,float valor);
 void escalarPoli(Poligono *poli, float valor);
 void refletirReta(Reta *reta, int direcao);
 void refletirPoli(Poligono *poli, int direcao);
+void rotacionarRetaInversa(Reta *reta);
+void rotacionarPoliInversa(Poligono *poli);
+void criarMatrizRotPoliInversa(Poligono *poli, double result[3][3]);
+void criarMatrizRotRetaInversa(Reta *reta, double result[3][3]);
 
 #endif
 
