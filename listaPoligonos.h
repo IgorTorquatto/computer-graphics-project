@@ -20,6 +20,11 @@ void ListaPoligonosInserirFim(ListaPoligonos* lista, Poligono p);
 //void selecionarPoligonoMaisProximo(ListaPoligonos* lista, int x, int y);
 void selecionarPoli(ListaPoligonos* lista, int x, int y);
 void deletarPoligonosSelecionados(ListaPoligonos* lista);
+int orientacao(PontoGraham p, PontoGraham q, PontoGraham r);
+double distanciaQuad(PontoGraham p1, PontoGraham p2);
+int compararPontos(const void *vp1, const void *vp2);
+int poligonoEhConvexo(Poligono *p);
+void grahamConvexo(Poligono *p);
 
 #endif
 

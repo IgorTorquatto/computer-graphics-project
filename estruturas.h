@@ -4,7 +4,7 @@
 #include <stdio.h>
 #define MAX_VERTICES 100
 
-// Definições de tipos
+// Definiï¿½ï¿½es de tipos
 typedef struct ponto Ponto;
 typedef struct reta Reta;
 
@@ -34,5 +34,11 @@ typedef struct poligono {
     double rgb_color[3];
     int selected;
 } Poligono;
+
+// Estrutura auxiliar para o algoritmo de Graham
+typedef struct {
+    double x;
+    double y;
+} PontoGraham;
 
 #endif

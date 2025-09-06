@@ -164,6 +164,14 @@ void teclado(unsigned char key, int x, int y) {
             printf("Polígono espelhado verticalmente\n");
             refletirPoli(poliSelecionado, 2);
         }
+        else if (key == '.') {
+            if (!poligonoEhConvexo(poliSelecionado)) {
+                grahamConvexo(poliSelecionado);
+                printf("Polígono transformado em convexo.\n");
+            } else {
+                printf("Polígono já é convexo.\n");
+            }
+        }
     }
 
     glutPostRedisplay();
